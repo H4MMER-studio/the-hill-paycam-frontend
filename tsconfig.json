@@ -1,31 +1,19 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "noImplicitReturns": false,
-    "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "noImplicitAny": false,
-    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "es2017", "ESNext"],
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "target": "es5",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@svg": ["assets/svg/index"]
-    }
+    "isolatedModules": true,
+    "jsx": "preserve"
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
