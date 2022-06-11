@@ -64,6 +64,10 @@ const SideMenu: React.VFC<IProps> = ({ isOpen, close }) => {
         router.push('vision');
         break;
 
+      case 'Business':
+        router.push('business');
+        break;
+
       default:
         break;
     }

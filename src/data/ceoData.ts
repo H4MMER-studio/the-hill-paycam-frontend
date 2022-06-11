@@ -1,4 +1,6 @@
-export const CEOData = {
+import { ServiceDataV1 } from '@/interface';
+
+export const CEOData: ServiceDataV1 = {
   ENG: {
     data: [
       {
@@ -17,5 +19,7 @@ export const CEOData = {
       },
     ],
   },
-  KHM: {},
+  KHM: {
+    data: [],
+  },
 };

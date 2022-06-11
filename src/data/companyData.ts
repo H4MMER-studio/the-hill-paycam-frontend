@@ -1,4 +1,6 @@
-export const CompanyData = {
+import { ServiceDataV1 } from '@/interface';
+
+export const CompanyData: ServiceDataV1 = {
   ENG: {
     data: [
       {

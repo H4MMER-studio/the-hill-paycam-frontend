@@ -1,4 +1,6 @@
-export const VisionData = {
+import { ServiceDataV1 } from '@/interface';
+
+export const VisionData: ServiceDataV1 = {
   ENG: {
     data: [
       {
@@ -18,5 +20,7 @@ export const VisionData = {
       },
     ],
   },
-  KHM: {},
+  KHM: {
+    data: [],
+  },
 };
