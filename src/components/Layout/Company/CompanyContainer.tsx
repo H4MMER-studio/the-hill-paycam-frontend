@@ -145,7 +145,7 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                 {CompanyData[language].data.map((d, index) => {
                   if (width > 1023) {
                     return (
-                      <InfoCard key={d.title} idx={index}>
+                      <InfoCard key={index} idx={index}>
                         <CardTitle language={language}>{d.title}</CardTitle>
                         <CardContents language={language}>
                           {d.value}
@@ -154,7 +154,7 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                     );
                   } else {
                     return (
-                      <MobileCard key={d.title}>
+                      <MobileCard key={index}>
                         <CardTitle language={language}>{d.title}</CardTitle>
                         <CardContents language={language}>
                           {d.value}
