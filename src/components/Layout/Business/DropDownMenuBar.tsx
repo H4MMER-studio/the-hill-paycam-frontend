@@ -44,6 +44,7 @@ const MenuList = styled.div`
   top: 54px;
   width: 100%;
   left: 0px;
+  z-index: 1;
 `;
 
 const MenuItem = styled.div<{ selected: Boolean }>`
@@ -52,7 +53,7 @@ const MenuItem = styled.div<{ selected: Boolean }>`
   font-size: 20px;
   width: 100%;
   height: 54px;
-  background-color: ${(props) => (props.selected ? '#6100FF' : '#ffffff4d')};
+  background-color: ${(props) => (props.selected ? '#6100FF' : '#515151')};
   color: #fff;
   padding: 0 16px;
   display: flex;

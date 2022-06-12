@@ -25,7 +25,8 @@ const Menu = styled.div<{ isSelected: Boolean }>`
   height: 77px;
   width: 278px;
   color: ${(props) => (props.isSelected ? '#000' : '#a3a3a3')};
-  background: ${(props) => (props.isSelected ? '#fff' : '#000')};
+  background: ${(props) =>
+    props.isSelected ? '#fff' : 'rgba(255, 255, 255, 0.2)'};
 
   display: flex;
   justify-content: center;
