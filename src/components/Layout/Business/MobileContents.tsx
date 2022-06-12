@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BusinessData } from '@/data/BusinessData';
+import { BusinessData } from '@/data/BusinessDatas';
 import { Language } from '@/interface';
 
 interface IProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CEOData } from '@/data/CeoData';
+import { CEOData } from '@/data/CeoDatas';
 import { Language } from '@/interface';
 
 interface IProps {
