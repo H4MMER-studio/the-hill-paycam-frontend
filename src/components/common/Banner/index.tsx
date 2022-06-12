@@ -162,17 +162,9 @@ const MenuItem = styled.div`
   font-size: 16px;
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: red;
-`;
-
 const Banner: React.FC<IProps> = ({ imageSrc, title }) => {
   const router = useRouter();
   const [isExpand, setIsExpand] = useState('collapse');
-  const clickMene = () => {};
 
   return (
     <>

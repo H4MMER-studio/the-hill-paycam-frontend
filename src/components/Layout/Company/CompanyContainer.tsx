@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Common } from '@/components';
-import { CompanyData } from '@/data/companyData';
+import { CompanyData } from '@/data/CompanyData';
 import { useResize } from '@/hooks';
 import { Language } from '@/interface';
 

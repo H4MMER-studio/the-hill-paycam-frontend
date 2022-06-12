@@ -95,9 +95,9 @@ const MainNav: React.VFC<IProps> = ({ language, setLanguage }) => {
               <Languages onClick={() => setLanguage('KHM')}>KHM</Languages>
             </>
           ) : language === 'ENG' ? (
-            <Languages onClick={() => setLanguage('KHM')}>ENG</Languages>
+            <Languages onClick={() => setLanguage('KHM')}>KHM</Languages>
           ) : (
-            <Languages onClick={() => setLanguage('ENG')}>KHM</Languages>
+            <Languages onClick={() => setLanguage('ENG')}>ENG</Languages>
           )}
           <MenuIcon
             src={'/icon/menu_icon.svg'}

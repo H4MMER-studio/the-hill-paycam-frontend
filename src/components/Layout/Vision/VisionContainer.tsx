@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Common } from '@/components';
-import { VisionData } from '@/data/visionData';
+import { VisionData } from '@/data/VisionData';
 import { Language } from '@/interface';
 
 interface IProps {

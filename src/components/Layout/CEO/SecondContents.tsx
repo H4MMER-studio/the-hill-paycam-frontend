@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CEOData } from '@/data/ceoData';
+import { CEOData } from '@/data/CeoData';
 import { Language } from '@/interface';
 
 interface IProps {
@@ -31,6 +31,7 @@ const Title = styled.div<{ language: Language }>`
   right: 0px;
   top: 0px;
   text-align: right;
+  max-width: 1052px;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -53,6 +54,7 @@ const Value = styled.div<{ language: Language }>`
   line-height: 42px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
+  max-width: 600px;
 
   @media (max-width: 1023px) {
     position: relative;
