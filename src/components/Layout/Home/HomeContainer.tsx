@@ -28,7 +28,7 @@ const HomeContiner: React.VFC = () => {
   return (
     <STDHomeContainer>
       <OpacityLayer />
-      <HomeVideo loop autoPlay muted>
+      <HomeVideo loop autoPlay muted playsInline>
         <source
           src={
             'https://the-hill-paycam.s3.ap-southeast-1.amazonaws.com/home.mp4'
