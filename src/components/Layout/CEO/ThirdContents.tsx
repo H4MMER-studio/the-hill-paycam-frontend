@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CEOData } from '@/data/CeoDatas';
 import { Language } from '@/interface';
 import useIsInViewport from 'use-is-in-viewport';
+import { mixins } from '@/styles';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -45,6 +46,7 @@ const Title = styled.div<{ language: Language; isShow: Boolean }>`
 
 const Value = styled.div<{ language: Language; isShow: boolean }>`
   position: absolute;
+  max-width: 692px;
   font-weight: 500;
   color: #fff;
   font-size: 24px;
@@ -66,14 +68,27 @@ const Value = styled.div<{ language: Language; isShow: boolean }>`
     font-size: 24px;
     line-height: 33.6px;
     width: 100%;
+    max-width: unset;
   }
 
   @media (max-width: 1023px) {
     position: relative;
     font-size: 16px;
-    white-space: unset;
     line-height: 24px;
     top: 0px;
+  }
+`;
+
+const STDFlexBox = styled.div`
+  ${mixins.flexSet('flex-start', 'flex-start')}
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .number_style {
+    margin-right: 8px;
   }
 `;
 
@@ -101,6 +116,21 @@ const ThirdContents: React.FC<IProps> = ({ language }) => {
     isInContents && !isShowContents && setIsShowContents(true);
   }, [isInContents]);
 
+  const getCustomNumber = (num: number) => {
+    switch (num) {
+      case 1:
+        return '¹';
+      case 2:
+        return '²';
+      case 3:
+        return '³';
+      case 4:
+        return '⁴';
+      default:
+        return '⁵';
+    }
+  };
+
   return (
     <ThirdContentsContainer>
       <Layout>
@@ -109,7 +139,16 @@ const ThirdContents: React.FC<IProps> = ({ language }) => {
           {CEOData[language].data[2].title}
         </Title>
         <Value isShow={isShowContents} language={language}>
-          {CEOData[language].data[2].value}
+          {language === 'KHM'
+            ? CEOData[language].data[2].value
+            : CEOData.ENG.data[2].value.split('\n\n').map((text, index) => (
+                <STDFlexBox key={text}>
+                  <span className="number_style">
+                    {getCustomNumber(index + 1)}
+                  </span>
+                  <p>{text.slice(2)}</p>
+                </STDFlexBox>
+              ))}
         </Value>
       </Layout>
     </ThirdContentsContainer>

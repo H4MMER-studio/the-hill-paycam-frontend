@@ -15,7 +15,7 @@ export const CEOData: ServiceDataV1 = {
       {
         title: `History of CEO`,
         value:
-          '¹ CEO of The Hill PAYCAMCO., ltd\n\n² Cambodian Government Appoints First Foreign Deputy Chief Cabinet Secretary (Secretary Office of the Prime Minister of the Cabinet Council Office)\n\n³ CEO of WL PAYCAMCO.,ltd\n\n⁴ Chairman of the Korea-Cambodia Small and Medium Enterprises Association\n\n⁵CEO of Wonlim Holdings Co., Ltd. ',
+          '¹ CEO of The Hill PAYCAMCO., ltd\n\n² Cambodian Government Appoints First Foreign Deputy Chief Cabinet Secretary (Secretary Office of the Prime Minister of the Cabinet Council Office)\n\n³ CEO of WL PAYCAMCO.,ltd\n\n⁴ Chairman of the Korea-Cambodia Small and Medium Enterprises Association\n\n⁵ CEO of Wonlim Holdings Co., Ltd. ',
       },
     ],
   },
