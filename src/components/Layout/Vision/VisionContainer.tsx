@@ -36,6 +36,37 @@ const YoungerPopulatinoLayout = styled.div`
   }
 `;
 
+const InfiniteGlowthLayout = styled.div`
+  position: relative;
+  margin-top: 390px;
+  margin-bottom: 150px;
+  height: 329px;
+  width: 1000px;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    height: auto;
+    margin-top: 48px;
+    margin-bottom: 0px;
+  }
+`;
+
+const Vistion2Image = styled.img`
+  position: absolute;
+  width: 363px;
+  height: 383px;
+  bottom: 216px;
+  border-radius: 13px;
+  right: 0px;
+
+  @media (max-width: 1023px) {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+  }
+`;
+
 const Title = styled.div`
   position: relative;
   color: #fff;
@@ -86,22 +117,6 @@ const YoungerImage = styled.img`
   }
 `;
 
-const Vistion2Image = styled.img`
-  position: absolute;
-  width: 363px;
-  height: 383px;
-  bottom: 216px;
-  border-radius: 13px;
-  right: 0px;
-
-  @media (max-width: 1023px) {
-    position: relative;
-    bottom: 0px;
-    width: 100%;
-    height: auto;
-  }
-`;
-
 const Vistion3Image = styled.img`
   position: absolute;
   width: 363px;
@@ -118,24 +133,18 @@ const Vistion3Image = styled.img`
   }
 `;
 
-const InfiniteGlowthLayout = styled.div`
-  position: relative;
-  margin-top: 390px;
-  margin-bottom: 150px;
-  height: 329px;
-  width: 1000px;
-
-  @media (max-width: 1023px) {
-    margin-top: 0px;
-  }
-`;
-
 const CambodiaLayout = styled.div`
   position: relative;
   margin-top: 390px;
   margin-bottom: 150px;
   height: 329px;
   max-width: 1000px;
+
+  @media (max-width: 1023px) {
+    margin-top: 72px;
+    padding-bottom: 176px;
+    height: auto;
+  }
 `;
 
 const VisionContainer: React.VFC<IProps> = ({ language }) => {

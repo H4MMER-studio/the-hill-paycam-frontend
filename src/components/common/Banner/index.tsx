@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { MenuType } from '@/interface';
 
 interface IProps {
   imageSrc: string;
@@ -102,6 +103,7 @@ const HomeText = styled.div`
 `;
 
 const CurrentMenuLayout = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   width: 179px;
@@ -110,6 +112,17 @@ const CurrentMenuLayout = styled.div`
 
   @media (max-width: 1023px) {
     width: 171px;
+  }
+
+  .expand {
+    transform: rotate(180deg);
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+  }
+  .collapse {
+    transform: rotate(360deg);
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
   }
 `;
 
@@ -131,28 +144,96 @@ const CurrentMenu = styled.div`
   }
 `;
 
+const MenuList = styled.div`
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  height: 300px;
+`;
+
+const MenuItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  width: 100%;
+  height: 56px;
+  background-color: #ffffff4d;
+  color: #fff;
+  font-size: 16px;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+`;
+
 const Banner: React.FC<IProps> = ({ imageSrc, title }) => {
   const router = useRouter();
+  const [isExpand, setIsExpand] = useState('collapse');
+  const clickMene = () => {};
 
   return (
-    <STDBannerContainer>
-      <BannerImage src={imageSrc} />
-      <BannerContentsLayout>
-        <MenuTitle>{title}</MenuTitle>
-        <MenuLayout>
-          <HomeIcon src={'/icon/home.svg'} onClick={() => router.push('/')} />
-          <Divider />
-          <HomeText onClick={() => router.push('/')}>Home</HomeText>
-          <Divider />
-          <CurrentMenuLayout>
-            <CurrentMenu>{title}</CurrentMenu>
-            <ExpandIcon src={'/icon/expand_more.svg'} />
-          </CurrentMenuLayout>
-        </MenuLayout>
-      </BannerContentsLayout>
-      <GradientLayout />
-    </STDBannerContainer>
+    <>
+      <STDBannerContainer>
+        <BannerImage src={imageSrc} />
+        <BannerContentsLayout>
+          <MenuTitle>{title}</MenuTitle>
+          <MenuLayout>
+            <HomeIcon src={'/icon/home.svg'} onClick={() => router.push('/')} />
+            <Divider />
+            <HomeText onClick={() => router.push('/')}>Home</HomeText>
+            <Divider />
+            <CurrentMenuLayout
+              onClick={() =>
+                setIsExpand(isExpand === 'collapse' ? 'expand' : 'collapse')
+              }
+            >
+              <CurrentMenu>{title}</CurrentMenu>
+              <ExpandIcon src={'/icon/expand_more.svg'} className={isExpand} />
+              {isExpand === 'expand' && (
+                <MenuList>
+                  {MENULIST.map((m) => (
+                    <MenuItem key={m.name} onClick={() => router.push(m.path)}>
+                      {m.name}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              )}
+            </CurrentMenuLayout>
+          </MenuLayout>
+        </BannerContentsLayout>
+        <GradientLayout />
+      </STDBannerContainer>
+    </>
   );
 };
 
 export default Banner;
+
+const MENULIST: {
+  name: 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+  path: string;
+}[] = [
+  {
+    name: 'HOME',
+    path: '/',
+  },
+  {
+    name: 'Company info.',
+    path: '/company',
+  },
+  {
+    name: 'CEO',
+    path: '/ceo',
+  },
+  {
+    name: 'Vision',
+    path: '/vision',
+  },
+  {
+    name: 'Business',
+    path: '/business',
+  },
+];

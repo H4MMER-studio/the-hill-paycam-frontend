@@ -84,14 +84,14 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
       <SectionLayout id="kingdom">
         <TopLayout>
           <TopLeftLayout>
-            <SubValue>{BusinessData[language].data[0].subTitle}</SubValue>
-            <Title>{BusinessData[language].data[0].title}</Title>
+            <SubValue>{BusinessData[language].data[0]?.subTitle}</SubValue>
+            <Title>{BusinessData[language].data[0]?.title}</Title>
           </TopLeftLayout>
           <ImageLayout>
             <Image src={'/image/business_golf.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[0].value}</ValueLayout>
+        <ValueLayout>{BusinessData[language].data[0]?.value}</ValueLayout>
       </SectionLayout>
       <SectionLayout id="cc">
         <TopLayout>
@@ -99,23 +99,23 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             <Image src={'/image/business_golf.png'} />
           </ImageLayout>
           <TopRightLayout>
-            <SubValue>{BusinessData[language].data[1].subTitle}</SubValue>
-            <Title>{BusinessData[language].data[1].title}</Title>
+            <SubValue>{BusinessData[language].data[1]?.subTitle}</SubValue>
+            <Title>{BusinessData[language].data[1]?.title}</Title>
           </TopRightLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[1].value}</ValueLayout>
+        <ValueLayout>{BusinessData[language].data[1]?.value}</ValueLayout>
       </SectionLayout>
       <SectionLayout id="asset">
         <TopLayout>
           <TopLeftLayout>
-            <SubValue>{BusinessData[language].data[2].subTitle}</SubValue>
-            <Title>{BusinessData[language].data[2].title}</Title>
+            <SubValue>{BusinessData[language].data[2]?.subTitle}</SubValue>
+            <Title>{BusinessData[language].data[2]?.title}</Title>
           </TopLeftLayout>
           <ImageLayout>
             <Image src={'/image/bitcoin.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[2].value}</ValueLayout>
+        <ValueLayout>{BusinessData[language].data[2]?.value}</ValueLayout>
       </SectionLayout>
       <SectionLayout id="blockChain">
         <TopLayout>
@@ -123,23 +123,23 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             <Image src={'/image/block_chain.png'} />
           </ImageLayout>
           <TopRightLayout>
-            <SubValue>{BusinessData[language].data[3].subTitle}</SubValue>
-            <Title>{BusinessData[language].data[3].title}</Title>
+            <SubValue>{BusinessData[language].data[3]?.subTitle}</SubValue>
+            <Title>{BusinessData[language].data[3]?.title}</Title>
           </TopRightLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[3].value}</ValueLayout>
+        <ValueLayout>{BusinessData[language].data[3]?.value}</ValueLayout>
       </SectionLayout>
       <SectionLayout id="josun">
         <TopLayout>
           <TopLeftLayout>
-            <SubValue>{BusinessData[language].data[4].subTitle}</SubValue>
-            <Title>{BusinessData[language].data[4].title}</Title>
+            <SubValue>{BusinessData[language].data[4]?.subTitle}</SubValue>
+            <Title>{BusinessData[language].data[4]?.title}</Title>
           </TopLeftLayout>
           <ImageLayout>
             <Image src={'/image/hotel.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[4].value}</ValueLayout>
+        <ValueLayout>{BusinessData[language].data[4]?.value}</ValueLayout>
       </SectionLayout>
     </STDMobileContentsLayout>
   );

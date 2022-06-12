@@ -90,7 +90,6 @@ const MainNav: React.VFC<IProps> = ({ language, setLanguage }) => {
         <RightSideLayout>
           {width > 1023 ? (
             <>
-              {' '}
               <Languages onClick={() => setLanguage('ENG')}>ENG</Languages>
               <Divider />
               <Languages onClick={() => setLanguage('KHM')}>KHM</Languages>
