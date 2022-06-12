@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import SideMenu from '../Side-menu';
 import { Language } from '@/interface';
 import { useRouter } from 'next/router';
+import { useResize } from '@/hooks/useResize';
 
 interface IProps {
+  language: Language;
   setLanguage: (lan: Language) => void;
 }
 
@@ -19,12 +21,22 @@ const STDMainNavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 1023px) {
+    height: 64px;
+    padding: 0 16px;
+  }
 `;
 
 const LogoImage = styled.img`
   width: 124px;
   height: 58px;
   cursor: pointer;
+
+  @media (max-width: 1023px) {
+    width: 82px;
+    height: 32px;
+  }
 `;
 
 const RightSideLayout = styled.div`
@@ -41,6 +53,11 @@ const Languages = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @media (max-width: 1023px) {
+    width: 42px;
+    height: 54px;
+  }
 `;
 
 const Divider = styled.div`
@@ -53,20 +70,36 @@ const Divider = styled.div`
 const MenuIcon = styled.img`
   margin-left: 12px;
   cursor: pointer;
+
+  @media (max-width: 1023px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
+  }
 `;
 
-const MainNav: React.VFC<IProps> = ({ setLanguage }) => {
+const MainNav: React.VFC<IProps> = ({ language, setLanguage }) => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const route = useRouter();
+  const { width } = useResize();
 
   return (
     <>
       <STDMainNavContainer>
         <LogoImage src={'/image/logo.png'} onClick={() => route.push('/')} />
         <RightSideLayout>
-          <Languages onClick={() => setLanguage('ENG')}>ENG</Languages>
-          <Divider />
-          <Languages onClick={() => setLanguage('KHM')}>KHM</Languages>
+          {width > 1023 ? (
+            <>
+              {' '}
+              <Languages onClick={() => setLanguage('ENG')}>ENG</Languages>
+              <Divider />
+              <Languages onClick={() => setLanguage('KHM')}>KHM</Languages>
+            </>
+          ) : language === 'ENG' ? (
+            <Languages onClick={() => setLanguage('KHM')}>ENG</Languages>
+          ) : (
+            <Languages onClick={() => setLanguage('ENG')}>KHM</Languages>
+          )}
           <MenuIcon
             src={'/icon/menu_icon.svg'}
             onClick={() => setOpenSideMenu(true)}

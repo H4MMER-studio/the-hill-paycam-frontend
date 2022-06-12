@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const BusinessPage: NextPage<IProps> = ({ language }) => {
-  return <Business.Container />;
+  return <Business.Container language={language} />;
 };
 
 export default BusinessPage;

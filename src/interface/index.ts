@@ -1,4 +1,10 @@
 export type MenuType = 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+export type BusinessMenuYpe =
+  | 'Kingdom of State'
+  | 'The Hill Lake CC'
+  | 'TEBAH Project'
+  | 'Blockchain Service'
+  | 'Josun Palace';
 
 export type Language = 'ENG' | 'KHM';
 

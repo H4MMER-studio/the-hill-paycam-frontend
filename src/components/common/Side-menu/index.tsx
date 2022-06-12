@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { MenuType } from '@/interface';
 import { useRouter } from 'next/router';
@@ -8,6 +8,15 @@ interface IProps {
   close: () => void;
 }
 
+const AllLayout = styled.div<{ isOpen: Boolean }>`
+  position: absolute;
+  top: 0px;
+  left: ${(props) => (props.isOpen ? '0px' : '-100%')};
+  width: calc(100% - 424px);
+  height: 100%;
+  z-index: 100;
+`;
+
 const STDSideMenuLayout = styled.div<{ isOpen: Boolean }>`
   position: relative;
   position: fixed;
@@ -15,8 +24,12 @@ const STDSideMenuLayout = styled.div<{ isOpen: Boolean }>`
   height: 100%;
   width: 424px;
   background-color: #000;
-  z-index: 100;
+  z-index: 1000;
   transition-duration: 0.5s;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 `;
 
 const CloseIcon = styled.img`
@@ -29,6 +42,13 @@ const CloseIcon = styled.img`
 const MenuLayout = styled.div`
   padding-top: 107px;
   padding-left: 70px;
+
+  @media (max-width: 1024px) {
+    padding-left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Menu = styled.div<{ isSelected: Boolean }>`
@@ -46,57 +66,62 @@ const Menu = styled.div<{ isSelected: Boolean }>`
 const SideMenu: React.VFC<IProps> = ({ isOpen, close }) => {
   const router = useRouter();
 
-  const clickMenu = (menu: MenuType) => {
-    switch (menu) {
-      case 'HOME':
-        router.push('/');
-        break;
-
-      case 'Company info.':
-        router.push('/company');
-        break;
-
-      case 'CEO':
-        router.push('ceo');
-        break;
-
-      case 'Vision':
-        router.push('vision');
-        break;
-
-      case 'Business':
-        router.push('business');
-        break;
-
-      default:
-        break;
-    }
+  const clickMenu = (menu: {
+    name: 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+    path: string;
+  }) => {
+    router.push(menu.path);
 
     close();
   };
 
   return (
-    <STDSideMenuLayout isOpen={isOpen}>
-      <CloseIcon src={'/icon/close.svg'} onClick={close} />
-      <MenuLayout>
-        {MENULIST.map((menu) => {
-          return (
-            <Menu key={menu} isSelected onClick={() => clickMenu(menu)}>
-              {menu}
-            </Menu>
-          );
-        })}
-      </MenuLayout>
-    </STDSideMenuLayout>
+    <>
+      <AllLayout isOpen={isOpen} onClick={close} />
+      <STDSideMenuLayout isOpen={isOpen}>
+        <CloseIcon src={'/icon/close.svg'} onClick={close} />
+        <MenuLayout>
+          {MENULIST.map((menu) => {
+            return (
+              <Menu
+                key={menu.name}
+                isSelected={router.pathname === menu.path}
+                onClick={() => clickMenu(menu)}
+              >
+                {menu.name}
+              </Menu>
+            );
+          })}
+        </MenuLayout>
+      </STDSideMenuLayout>
+    </>
   );
 };
 
 export default SideMenu;
 
-const MENULIST: MenuType[] = [
-  'HOME',
-  'Company info.',
-  'CEO',
-  'Vision',
-  'Business',
+const MENULIST: {
+  name: 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+  path: string;
+}[] = [
+  {
+    name: 'HOME',
+    path: '/',
+  },
+  {
+    name: 'Company info.',
+    path: '/company',
+  },
+  {
+    name: 'CEO',
+    path: '/ceo',
+  },
+  {
+    name: 'Vision',
+    path: '/vision',
+  },
+  {
+    name: 'Business',
+    path: '/business',
+  },
 ];

@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <MainNav setLanguage={setLanguage} />
+      <MainNav language={language} setLanguage={setLanguage} />
       <Component {...pageProps} language={language} />
     </>
   );
