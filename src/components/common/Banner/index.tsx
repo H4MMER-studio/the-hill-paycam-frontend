@@ -157,7 +157,7 @@ const MenuItem = styled.div`
   padding: 0 16px;
   width: 100%;
   height: 56px;
-  background-color: #ffffff4d;
+  background-color: #808080;
   color: #fff;
   font-size: 16px;
 `;
