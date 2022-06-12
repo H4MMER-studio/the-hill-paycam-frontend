@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CEOData } from '@/data/ceoData';
+import { Language } from '@/interface';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -19,12 +20,13 @@ const Layout = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ language: Language }>`
   position: absolute;
   font-weight: 800;
   color: #fff;
   font-size: 64px;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   white-space: pre-wrap;
   left: 0px;
   top: 0px;
@@ -38,7 +40,7 @@ const Title = styled.div`
   }
 `;
 
-const Value = styled.div`
+const Value = styled.div<{ language: Language }>`
   position: absolute;
   font-weight: 500;
   color: #fff;
@@ -47,8 +49,8 @@ const Value = styled.div`
   right: 0px;
   top: 141px;
   line-height: 42px;
-  width: 692px;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   z-index: 2;
   line-height: 33.6px;
 
@@ -90,8 +92,8 @@ const ThirdContents: React.FC<IProps> = ({ language }) => {
     <ThirdContentsContainer>
       <Layout>
         <Image src={'/image/ceo_profile.png'} />
-        <Title>{CEOData[language].data[2].title}</Title>
-        <Value>{CEOData[language].data[2].value}</Value>
+        <Title language={language}>{CEOData[language].data[2].title}</Title>
+        <Value language={language}>{CEOData[language].data[2].value}</Value>
       </Layout>
     </ThirdContentsContainer>
   );

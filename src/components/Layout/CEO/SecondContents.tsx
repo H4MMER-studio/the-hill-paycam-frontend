@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CEOData } from '@/data/ceoData';
+import { Language } from '@/interface';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -19,12 +20,13 @@ const Layout = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ language: Language }>`
   position: absolute;
   font-weight: 800;
   color: #fff;
   font-size: 64px;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   white-space: pre-wrap;
   right: 0px;
   top: 0px;
@@ -39,7 +41,7 @@ const Title = styled.div`
   }
 `;
 
-const Value = styled.div`
+const Value = styled.div<{ language: Language }>`
   position: absolute;
   font-weight: 500;
   color: #fff;
@@ -49,6 +51,8 @@ const Value = styled.div`
   top: 50%;
   transform: translateY(-50%);
   line-height: 42px;
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
 
   @media (max-width: 1023px) {
     position: relative;
@@ -77,8 +81,8 @@ const SecondContents: React.VFC<IProps> = ({ language }) => {
     <SecondContentsContainer>
       <Layout>
         <Image src={'/image/ceo-2.png'} />
-        <Title>{CEOData[language].data[1].title}</Title>
-        <Value>{CEOData[language].data[1].value}</Value>
+        <Title language={language}>{CEOData[language].data[1].title}</Title>
+        <Value language={language}>{CEOData[language].data[1].value}</Value>
       </Layout>
     </SecondContentsContainer>
   );

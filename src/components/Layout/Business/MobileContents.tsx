@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BusinessData } from '@/data/businessData';
+import { Language } from '@/interface';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -25,18 +26,20 @@ const TopLeftLayout = styled.div`
   }
 `;
 
-const SubValue = styled.div`
+const SubValue = styled.div<{ language: Language }>`
   color: #cecece;
   font-weight: 800;
   margin-bottom: 16px;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ language: Language }>`
   font-size: 20px;
   font-weight: 800;
   line-height: 24px;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   color: #fff;
   width: 202px;
 
@@ -63,9 +66,10 @@ const Image = styled.img`
   }
 `;
 
-const ValueLayout = styled.div`
+const ValueLayout = styled.div<{ language: Language }>`
   font-weight: 500;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   font-size: 14px;
   line-height: 21px;
   color: #ebebeb;
@@ -84,14 +88,20 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
       <SectionLayout id="kingdom">
         <TopLayout>
           <TopLeftLayout>
-            <SubValue>{BusinessData[language].data[0]?.subTitle}</SubValue>
-            <Title>{BusinessData[language].data[0]?.title}</Title>
+            <SubValue language={language}>
+              {BusinessData[language].data[0]?.subTitle}
+            </SubValue>
+            <Title language={language}>
+              {BusinessData[language].data[0]?.title}
+            </Title>
           </TopLeftLayout>
           <ImageLayout>
             <Image src={'/image/business_golf.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[0]?.value}</ValueLayout>
+        <ValueLayout language={language}>
+          {BusinessData[language].data[0]?.value}
+        </ValueLayout>
       </SectionLayout>
       <SectionLayout id="cc">
         <TopLayout>
@@ -99,23 +109,35 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             <Image src={'/image/business_golf.png'} />
           </ImageLayout>
           <TopRightLayout>
-            <SubValue>{BusinessData[language].data[1]?.subTitle}</SubValue>
-            <Title>{BusinessData[language].data[1]?.title}</Title>
+            <SubValue language={language}>
+              {BusinessData[language].data[1]?.subTitle}
+            </SubValue>
+            <Title language={language}>
+              {BusinessData[language].data[1]?.title}
+            </Title>
           </TopRightLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[1]?.value}</ValueLayout>
+        <ValueLayout language={language}>
+          {BusinessData[language].data[1]?.value}
+        </ValueLayout>
       </SectionLayout>
       <SectionLayout id="asset">
         <TopLayout>
           <TopLeftLayout>
-            <SubValue>{BusinessData[language].data[2]?.subTitle}</SubValue>
-            <Title>{BusinessData[language].data[2]?.title}</Title>
+            <SubValue language={language}>
+              {BusinessData[language].data[2]?.subTitle}
+            </SubValue>
+            <Title language={language}>
+              {BusinessData[language].data[2]?.title}
+            </Title>
           </TopLeftLayout>
           <ImageLayout>
             <Image src={'/image/bitcoin.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[2]?.value}</ValueLayout>
+        <ValueLayout language={language}>
+          {BusinessData[language].data[2]?.value}
+        </ValueLayout>
       </SectionLayout>
       <SectionLayout id="blockChain">
         <TopLayout>
@@ -123,23 +145,35 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             <Image src={'/image/block_chain.png'} />
           </ImageLayout>
           <TopRightLayout>
-            <SubValue>{BusinessData[language].data[3]?.subTitle}</SubValue>
-            <Title>{BusinessData[language].data[3]?.title}</Title>
+            <SubValue language={language}>
+              {BusinessData[language].data[3]?.subTitle}
+            </SubValue>
+            <Title language={language}>
+              {BusinessData[language].data[3]?.title}
+            </Title>
           </TopRightLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[3]?.value}</ValueLayout>
+        <ValueLayout language={language}>
+          {BusinessData[language].data[3]?.value}
+        </ValueLayout>
       </SectionLayout>
       <SectionLayout id="josun">
         <TopLayout>
           <TopLeftLayout>
-            <SubValue>{BusinessData[language].data[4]?.subTitle}</SubValue>
-            <Title>{BusinessData[language].data[4]?.title}</Title>
+            <SubValue language={language}>
+              {BusinessData[language].data[4]?.subTitle}
+            </SubValue>
+            <Title language={language}>
+              {BusinessData[language].data[4]?.title}
+            </Title>
           </TopLeftLayout>
           <ImageLayout>
             <Image src={'/image/hotel.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout>{BusinessData[language].data[4]?.value}</ValueLayout>
+        <ValueLayout language={language}>
+          {BusinessData[language].data[4]?.value}
+        </ValueLayout>
       </SectionLayout>
     </STDMobileContentsLayout>
   );

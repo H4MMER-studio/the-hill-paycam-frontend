@@ -15,7 +15,6 @@ const ContentsLayout = styled.div`
 
 const FlexBox = styled.div<{ isLast?: Boolean; isAsset?: Boolean }>`
   display: flex;
-  /* margin-bottom: 200px; */
   margin-bottom: ${(props) => (props.isLast ? 0 : props.isAsset ? 200 : 160)}px;
   padding-bottom: ${(props) => (props.isAsset ? 0 : 40)}px;
 `;

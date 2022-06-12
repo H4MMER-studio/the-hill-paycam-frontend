@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Common } from '@/components';
 import { CompanyData } from '@/data/companyData';
 import { useResize } from '@/hooks';
+import { Language } from '@/interface';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -64,9 +65,10 @@ const CardTitle = styled.div<{ language: 'ENG' | 'KHM' }>`
   font-weight: 600;
 `;
 
-const CardContents = styled.div`
+const CardContents = styled.div<{ language: Language }>`
   color: #d8d8d8;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   font-size: 18px;
   font-weight: 500;
   bottom: 0px;
@@ -122,21 +124,7 @@ const MobileCard = styled.div`
   }
 `;
 
-const BannerContentsLayout = styled.div``;
-
 const Title = styled.title``;
-
-const MenuTitle = styled.div`
-  color: #fff;
-  font-family: 'Inter';
-  font-size: 48px;
-  font-weight: 600;
-  margin-bottom: 20px;
-
-  @media (max-width: 1023px) {
-    font-size: 32px;
-  }
-`;
 
 const CompanyContainer: React.VFC<IProps> = ({ language }) => {
   const { width } = useResize();
@@ -159,14 +147,18 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                     return (
                       <InfoCard key={d.title} idx={index}>
                         <CardTitle language={language}>{d.title}</CardTitle>
-                        <CardContents>{d.value}</CardContents>
+                        <CardContents language={language}>
+                          {d.value}
+                        </CardContents>
                       </InfoCard>
                     );
                   } else {
                     return (
                       <MobileCard key={d.title}>
                         <CardTitle language={language}>{d.title}</CardTitle>
-                        <CardContents>{d.value}</CardContents>
+                        <CardContents language={language}>
+                          {d.value}
+                        </CardContents>
                       </MobileCard>
                     );
                   }

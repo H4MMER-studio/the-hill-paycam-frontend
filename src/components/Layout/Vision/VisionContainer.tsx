@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Common } from '@/components';
 import { VisionData } from '@/data/visionData';
+import { Language } from '@/interface';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -67,10 +68,11 @@ const Vistion2Image = styled.img`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ language: Language }>`
   position: relative;
   color: #fff;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   font-size: 64px;
   font-weight: 800;
   margin-bottom: 84px;
@@ -84,8 +86,10 @@ const Title = styled.div`
   }
 `;
 
-const Value = styled.div`
+const Value = styled.div<{ language: Language }>`
   position: relative;
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   color: #fff;
   white-space: pre-wrap;
   text-align: center;
@@ -155,18 +159,30 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
         <div>
           <YoungerPopulatinoLayout>
             <YoungerImage src={'/image/vision-1.png'} />
-            <Title>{VisionData[language].data[0].title}</Title>
-            <Value>{VisionData[language].data[0].value}</Value>
+            <Title language={language}>
+              {VisionData[language].data[0].title}
+            </Title>
+            <Value language={language}>
+              {VisionData[language].data[0].value}
+            </Value>
           </YoungerPopulatinoLayout>
           <InfiniteGlowthLayout>
             <Vistion2Image src={'/image/vision-2.png'} />
-            <Title>{VisionData[language].data[1].title}</Title>
-            <Value>{VisionData[language].data[1].value}</Value>
+            <Title language={language}>
+              {VisionData[language].data[1].title}
+            </Title>
+            <Value language={language}>
+              {VisionData[language].data[1].value}
+            </Value>
           </InfiniteGlowthLayout>
           <CambodiaLayout>
             <Vistion3Image src={'/image/vision-3.png'} />
-            <Title>{VisionData[language].data[2].title}</Title>
-            <Value>{VisionData[language].data[2].value}</Value>
+            <Title language={language}>
+              {VisionData[language].data[2].title}
+            </Title>
+            <Value language={language}>
+              {VisionData[language].data[2].value}
+            </Value>
           </CambodiaLayout>
         </div>
       </ContentsLayout>
