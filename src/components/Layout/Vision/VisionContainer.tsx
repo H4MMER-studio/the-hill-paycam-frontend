@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Common } from '@/components';
 import { VisionData } from '@/data/VisionDatas';
 import { Language } from '@/interface';
+import useIsInViewport from 'use-is-in-viewport';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -52,13 +53,15 @@ const InfiniteGlowthLayout = styled.div`
   }
 `;
 
-const Vistion2Image = styled.img`
+const Vistion2Image = styled.img<{ isShow: boolean }>`
   position: absolute;
   width: 363px;
   height: 383px;
   bottom: 216px;
   border-radius: 13px;
   right: 0px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -68,7 +71,7 @@ const Vistion2Image = styled.img`
   }
 `;
 
-const Title = styled.div<{ language: Language }>`
+const Title = styled.div<{ language: Language; isShow: Boolean }>`
   position: relative;
   color: #fff;
   font-family: ${(props) =>
@@ -79,6 +82,10 @@ const Title = styled.div<{ language: Language }>`
   text-align: center;
   z-index: 2;
 
+  top: ${(props) => (props.isShow ? 0 : 100)}px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
+
   @media (max-width: 1023px) {
     font-size: 24px;
     margin-top: 32px;
@@ -86,7 +93,7 @@ const Title = styled.div<{ language: Language }>`
   }
 `;
 
-const Value = styled.div<{ language: Language }>`
+const Value = styled.div<{ language: Language; isShow: Boolean }>`
   position: relative;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
@@ -97,6 +104,9 @@ const Value = styled.div<{ language: Language }>`
   font-size: 30px;
   height: 329px;
   max-width: 1000px;
+  top: ${(props) => (props.isShow ? 0 : 100)}px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 
   @media (max-width: 1023px) {
     font-size: 16px;
@@ -105,13 +115,15 @@ const Value = styled.div<{ language: Language }>`
   }
 `;
 
-const YoungerImage = styled.img`
+const YoungerImage = styled.img<{ isShow: boolean }>`
   position: absolute;
   width: 363px;
   height: 383px;
   bottom: 216px;
   border-radius: 13px;
   left: 0px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -121,13 +133,15 @@ const YoungerImage = styled.img`
   }
 `;
 
-const Vistion3Image = styled.img`
+const Vistion3Image = styled.img<{ isShow: boolean }>`
   position: absolute;
   width: 363px;
   height: 383px;
   bottom: 216px;
   border-radius: 13px;
   left: 0px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -152,35 +166,107 @@ const CambodiaLayout = styled.div`
 `;
 
 const VisionContainer: React.VFC<IProps> = ({ language }) => {
+  const [isInYounger, targetYounger] = useIsInViewport();
+  const [isInYoungerImg, targetYoungerImg] = useIsInViewport();
+
+  const [isInInfinite, targetInfinite] = useIsInViewport();
+  const [isInInfiniteImg, targetIsInInfiniteImg] = useIsInViewport();
+
+  const [isInCambodiaImg, targetCambodiaImg] = useIsInViewport();
+  const [isInCambodiaContents, targetIsInCambodiaContents] = useIsInViewport();
+
+  const [isShowYoungerImg, setIsShowyoungerImg] = useState(false);
+  const [isShowYoungerContents, setIsShowYoungerContents] = useState(false);
+
+  const [isShowInfiniteContents, setIsShowInfiniteContents] = useState(false);
+  const [isShowInfiniteImg, setIsShowInfiniteImg] = useState(false);
+
+  const [isShowCambodiaContents, setIsShowCambodiaContents] = useState(false);
+  const [isShowCambodiaImg, setIsShowCambodiaImg] = useState(false);
+
+  useEffect(() => {
+    isInYoungerImg && !isShowYoungerImg && setIsShowyoungerImg(true);
+  }, [isInYoungerImg]);
+
+  useEffect(() => {
+    !isShowYoungerContents && isInYounger && setIsShowYoungerContents(true);
+  }, [isInYounger]);
+
+  useEffect(() => {
+    isInInfinite && !isShowInfiniteContents && setIsShowInfiniteContents(true);
+  }, [isInInfinite]);
+
+  useEffect(() => {
+    isInInfiniteImg && !isShowInfiniteImg && setIsShowInfiniteImg(true);
+  }, [isInInfiniteImg]);
+
+  useEffect(() => {
+    isInCambodiaImg && !isShowCambodiaImg && setIsShowCambodiaImg(true);
+  }, [isInCambodiaImg]);
+
+  useEffect(() => {
+    isInCambodiaContents &&
+      !isShowCambodiaContents &&
+      setIsShowCambodiaContents(true);
+  }, [isInCambodiaContents]);
+
   return (
     <STDVisionLayout>
       <Common.Banner imageSrc="/image/vision.png" title="Vision" />
       <ContentsLayout>
         <div>
           <YoungerPopulatinoLayout>
-            <YoungerImage src={'/image/vision-1.png'} />
-            <Title language={language}>
+            <YoungerImage
+              src={'/image/vision-1.png'}
+              isShow={isShowYoungerImg}
+              ref={targetYoungerImg}
+            />
+            <Title
+              isShow={isShowYoungerContents}
+              language={language}
+              ref={targetYounger}
+            >
               {VisionData[language].data[0].title}
             </Title>
-            <Value language={language}>
+            <Value isShow={isShowYoungerContents} language={language}>
               {VisionData[language].data[0].value}
             </Value>
           </YoungerPopulatinoLayout>
           <InfiniteGlowthLayout>
-            <Vistion2Image src={'/image/vision-2.png'} />
-            <Title language={language}>
+            <Vistion2Image
+              src={'/image/vision-2.png'}
+              ref={targetIsInInfiniteImg}
+              isShow={isShowInfiniteImg}
+            />
+            <Title
+              language={language}
+              ref={targetInfinite}
+              isShow={isShowInfiniteContents}
+            >
               {VisionData[language].data[1].title}
             </Title>
-            <Value language={language}>
+            <Value
+              language={language}
+              ref={targetInfinite}
+              isShow={isShowInfiniteContents}
+            >
               {VisionData[language].data[1].value}
             </Value>
           </InfiniteGlowthLayout>
           <CambodiaLayout>
-            <Vistion3Image src={'/image/vision-3.png'} />
-            <Title language={language}>
+            <Vistion3Image
+              src={'/image/vision-3.png'}
+              ref={targetCambodiaImg}
+              isShow={isShowCambodiaImg}
+            />
+            <Title
+              language={language}
+              isShow={isShowCambodiaContents}
+              ref={targetIsInCambodiaContents}
+            >
               {VisionData[language].data[2].title}
             </Title>
-            <Value language={language}>
+            <Value language={language} isShow={isShowCambodiaContents}>
               {VisionData[language].data[2].value}
             </Value>
           </CambodiaLayout>

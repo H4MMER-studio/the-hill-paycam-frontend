@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Common } from '@/components';
 import { CompanyData } from '@/data/CompanyDatas';
 import { useResize } from '@/hooks';
 import { Language } from '@/interface';
+import useIsInViewport from 'use-is-in-viewport';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -24,11 +25,16 @@ const ContentsLayout = styled.div`
   }
 `;
 
-const LogoLayout = styled.div`
+const LogoLayout = styled.div<{ isShow: Boolean }>`
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   margin-bottom: 72px;
+
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  top: ${(props) => (props.isShow ? 0 : 60)}px;
+  transition-duration: 1s;
 `;
 
 const LogoImage = styled.img`
@@ -74,7 +80,7 @@ const CardContents = styled.div<{ language: Language }>`
   bottom: 0px;
 `;
 
-const InfoCard = styled.div<{ idx: number }>`
+const InfoCard = styled.div<{ idx: number; isShow: Boolean }>`
   position: absolute;
   padding: 24px;
   width: 264px;
@@ -84,16 +90,22 @@ const InfoCard = styled.div<{ idx: number }>`
   border: 1px solid #3c3c3c;
   left: ${(props) => props.idx * 25}%;
   top: ${(props) => {
-    if (props.idx === 0) {
-      return '0px';
-    } else if (props.idx === 1) {
-      return '64px';
-    } else if (props.idx === 2) {
-      return '128px';
+    if (props.isShow) {
+      if (props.idx === 0) {
+        return '0px';
+      } else if (props.idx === 1) {
+        return '64px';
+      } else if (props.idx === 2) {
+        return '128px';
+      } else if (props.idx) {
+        return '192px';
+      }
     } else {
-      return '192px';
+      return '0px';
     }
   }};
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -108,7 +120,8 @@ const Layout = styled.div`
   }
 `;
 
-const MobileCard = styled.div`
+const MobileCard = styled.div<{ isShow: Boolean; idx: number }>`
+  position: relative;
   width: 100%;
   min-height: 143px;
   background-color: rgba(31, 31, 31, 0.6);
@@ -118,6 +131,9 @@ const MobileCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 24px;
+  right: ${(props) => (props.isShow ? 0 : (props.idx + 1) * 150)}px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -128,6 +144,24 @@ const Title = styled.title``;
 
 const CompanyContainer: React.VFC<IProps> = ({ language }) => {
   const { width } = useResize();
+  const [isInCardView, targetCard] = useIsInViewport();
+  const [isInLogo, targetLogo] = useIsInViewport();
+  const [isInMobileCardView, targetMobileCard] = useIsInViewport();
+  const [isShow, setIsShow] = useState(false);
+  const [isShowLogo, setIsShowLogo] = useState(false);
+  const [isShowMobileCard, setIsShowMobileCard] = useState(false);
+
+  useEffect(() => {
+    isInCardView && !isShow && setIsShow(true);
+  }, [isInCardView]);
+
+  useEffect(() => {
+    isInLogo && !isShowLogo && setIsShowLogo(true);
+  }, [isInLogo]);
+
+  useEffect(() => {
+    isInMobileCardView && isInMobileCardView && setIsShowMobileCard(true);
+  }, [isInMobileCardView]);
 
   return (
     <STDCompanyContainer>
@@ -135,17 +169,17 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
       <Common.Banner imageSrc={'/image/company.png'} title={'Company Info'} />
       <Layout>
         <ContentsLayout>
-          <LogoLayout>
-            <LogoImage src={'/image/logo.png'} />
+          <LogoLayout isShow={isShowLogo}>
+            <LogoImage src={'/image/logo.png'} ref={targetLogo} />
           </LogoLayout>
           <CenterLayout>
             <div>
               <CompanyContentsImage src={'/image/company-contents.png'} />
-              <InfoCardLayout>
+              <InfoCardLayout ref={targetCard}>
                 {CompanyData[language].data.map((d, index) => {
                   if (width > 1023) {
                     return (
-                      <InfoCard key={index} idx={index}>
+                      <InfoCard key={index} idx={index} isShow={isShow}>
                         <CardTitle language={language}>{d.title}</CardTitle>
                         <CardContents language={language}>
                           {d.value}
@@ -154,7 +188,12 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                     );
                   } else {
                     return (
-                      <MobileCard key={index}>
+                      <MobileCard
+                        key={index}
+                        isShow={isShowMobileCard}
+                        idx={index}
+                        ref={index === 0 ? targetMobileCard : () => {}}
+                      >
                         <CardTitle language={language}>{d.title}</CardTitle>
                         <CardContents language={language}>
                           {d.value}

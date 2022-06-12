@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BusinessData } from '@/data/BusinessDatas';
 import { Language } from '@/interface';
+import useIsInViewPort from 'use-is-in-viewport';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -18,8 +19,12 @@ const TopLayout = styled.div`
   display: flex;
 `;
 
-const TopLeftLayout = styled.div`
+const TopLeftLayout = styled.div<{ isShow: boolean }>`
+  position: relative;
   width: 100%;
+  right: ${(props) => (props.isShow ? 0 : 200)}px;
+  transition-duration: 1s;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
 
   @media (max-width: 1023px) {
     padding-right: 24px;
@@ -48,11 +53,13 @@ const Title = styled.div<{ language: Language }>`
   }
 `;
 
-const ImageLayout = styled.div`
+const ImageLayout = styled.div<{ isShow: Boolean }>`
   width: 100%;
   max-height: 165px;
   border-radius: 13px;
   overflow: hidden;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 `;
 
 const Image = styled.img`
@@ -66,7 +73,8 @@ const Image = styled.img`
   }
 `;
 
-const ValueLayout = styled.div<{ language: Language }>`
+const ValueLayout = styled.div<{ language: Language; isShow: Boolean }>`
+  position: relative;
   font-weight: 500;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
@@ -75,6 +83,10 @@ const ValueLayout = styled.div<{ language: Language }>`
   color: #ebebeb;
   white-space: pre-wrap;
   margin-top: 36px;
+
+  top: ${(props) => (props.isShow ? 0 : 80)}px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 `;
 
 const TopRightLayout = styled.div`
@@ -83,11 +95,39 @@ const TopRightLayout = styled.div`
 `;
 
 const MobileContents: React.VFC<IProps> = ({ language }) => {
+  const [isInKingdom, targetKingdom] = useIsInViewPort();
+  const [isInGolf, targetIsInGolf] = useIsInViewPort();
+  const [isInAsset, targetIsAsset] = useIsInViewPort();
+  const [isInBlockChain, targetBlockChain] = useIsInViewPort();
+  const [isInJosun, targetIsInJosun] = useIsInViewPort();
+
+  const [isShowKingdom, setIsShowKingdom] = useState(false);
+  const [isShowGolf, setIsShowGolf] = useState(false);
+  const [isShowAsset, setIsShowAsset] = useState(false);
+  const [isShowBlockChain, setIsShowBlockChain] = useState(false);
+  const [isShowJosun, setIsShowJosun] = useState(false);
+
+  useEffect(() => {
+    isInKingdom && !isShowKingdom && setIsShowKingdom(true);
+  }, [isInKingdom]);
+  useEffect(() => {
+    isInGolf && !isShowGolf && setIsShowGolf(true);
+  }, [isInGolf]);
+  useEffect(() => {
+    isInAsset && !isShowAsset && setIsShowAsset(true);
+  }, [isInAsset]);
+  useEffect(() => {
+    isInBlockChain && !isShowBlockChain && setIsShowBlockChain(true);
+  }, [isInBlockChain]);
+  useEffect(() => {
+    isInJosun && !isShowJosun && setIsShowJosun(true);
+  }, [isInJosun]);
+
   return (
     <STDMobileContentsLayout>
-      <SectionLayout id="kingdom">
+      <SectionLayout id="kingdom" ref={targetKingdom}>
         <TopLayout>
-          <TopLeftLayout>
+          <TopLeftLayout isShow={isShowKingdom}>
             <SubValue language={language}>
               {BusinessData[language].data[0]?.subTitle}
             </SubValue>
@@ -95,17 +135,17 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
               {BusinessData[language].data[0]?.title}
             </Title>
           </TopLeftLayout>
-          <ImageLayout>
+          <ImageLayout isShow={isShowKingdom}>
             <Image src={'/image/business_golf.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout language={language}>
+        <ValueLayout language={language} isShow={isShowKingdom}>
           {BusinessData[language].data[0]?.value}
         </ValueLayout>
       </SectionLayout>
-      <SectionLayout id="cc">
+      <SectionLayout id="cc" ref={targetIsInGolf}>
         <TopLayout>
-          <ImageLayout>
+          <ImageLayout isShow={isShowGolf}>
             <Image src={'/image/business_golf.png'} />
           </ImageLayout>
           <TopRightLayout>
@@ -117,13 +157,13 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             </Title>
           </TopRightLayout>
         </TopLayout>
-        <ValueLayout language={language}>
+        <ValueLayout language={language} isShow={isShowGolf}>
           {BusinessData[language].data[1]?.value}
         </ValueLayout>
       </SectionLayout>
-      <SectionLayout id="asset">
+      <SectionLayout id="asset" ref={targetIsAsset}>
         <TopLayout>
-          <TopLeftLayout>
+          <TopLeftLayout isShow={isShowAsset}>
             <SubValue language={language}>
               {BusinessData[language].data[2]?.subTitle}
             </SubValue>
@@ -131,17 +171,17 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
               {BusinessData[language].data[2]?.title}
             </Title>
           </TopLeftLayout>
-          <ImageLayout>
+          <ImageLayout isShow={isShowAsset}>
             <Image src={'/image/bitcoin.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout language={language}>
+        <ValueLayout language={language} isShow={isShowAsset}>
           {BusinessData[language].data[2]?.value}
         </ValueLayout>
       </SectionLayout>
-      <SectionLayout id="blockChain">
+      <SectionLayout id="blockChain" ref={targetBlockChain}>
         <TopLayout>
-          <ImageLayout>
+          <ImageLayout isShow={isShowBlockChain}>
             <Image src={'/image/block_chain.png'} />
           </ImageLayout>
           <TopRightLayout>
@@ -153,13 +193,13 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             </Title>
           </TopRightLayout>
         </TopLayout>
-        <ValueLayout language={language}>
+        <ValueLayout language={language} isShow={isShowBlockChain}>
           {BusinessData[language].data[3]?.value}
         </ValueLayout>
       </SectionLayout>
-      <SectionLayout id="josun">
+      <SectionLayout id="josun" ref={targetIsInJosun}>
         <TopLayout>
-          <TopLeftLayout>
+          <TopLeftLayout isShow={isShowJosun}>
             <SubValue language={language}>
               {BusinessData[language].data[4]?.subTitle}
             </SubValue>
@@ -167,11 +207,11 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
               {BusinessData[language].data[4]?.title}
             </Title>
           </TopLeftLayout>
-          <ImageLayout>
+          <ImageLayout isShow={isShowJosun}>
             <Image src={'/image/hotel.png'} />
           </ImageLayout>
         </TopLayout>
-        <ValueLayout language={language}>
+        <ValueLayout language={language} isShow={isShowJosun}>
           {BusinessData[language].data[4]?.value}
         </ValueLayout>
       </SectionLayout>

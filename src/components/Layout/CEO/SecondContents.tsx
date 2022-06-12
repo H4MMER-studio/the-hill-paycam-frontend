@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { CEOData } from '@/data/CeoDatas';
 import { Language } from '@/interface';
+import useIsInViewport from 'use-is-in-viewport';
 
 interface IProps {
   language: 'ENG' | 'KHM';
@@ -20,7 +21,7 @@ const Layout = styled.div`
   }
 `;
 
-const Title = styled.div<{ language: Language }>`
+const Title = styled.div<{ language: Language; isShow: Boolean }>`
   position: absolute;
   font-weight: 800;
   color: #fff;
@@ -28,7 +29,9 @@ const Title = styled.div<{ language: Language }>`
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   white-space: pre-wrap;
-  right: 0px;
+  right: ${(props) => (props.isShow ? '0px' : '-200px')};
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
   top: 0px;
   text-align: right;
   max-width: 1052px;
@@ -42,13 +45,15 @@ const Title = styled.div<{ language: Language }>`
   }
 `;
 
-const Value = styled.div<{ language: Language }>`
+const Value = styled.div<{ language: Language; isShow: Boolean }>`
   position: absolute;
   font-weight: 500;
   color: #fff;
   font-size: 30px;
   white-space: pre-wrap;
-  left: 0px;
+  left: ${(props) => (props.isShow ? '0px' : '-200px')};
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
   top: 50%;
   transform: translateY(-50%);
   line-height: 42px;
@@ -66,10 +71,12 @@ const Value = styled.div<{ language: Language }>`
   }
 `;
 
-const Image = styled.img`
+const Image = styled.img<{ isShow: Boolean }>`
   position: absolute;
   bottom: 0px;
   right: 0px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -79,12 +86,38 @@ const Image = styled.img`
 `;
 
 const SecondContents: React.VFC<IProps> = ({ language }) => {
+  const [isInImage, targetImage] = useIsInViewport();
+  const [isInTitle, targetTitle] = useIsInViewport();
+  const [isInValue, targetValue] = useIsInViewport();
+
+  const [isShowImage, setIsShowImage] = useState(false);
+  const [isShowTitle, setIsShowTitle] = useState(false);
+  const [isShowValue, setIsShowValue] = useState(false);
+
+  useEffect(() => {
+    isInImage && !isShowImage && setIsShowImage(true);
+  }, [isInImage]);
+  useEffect(() => {
+    isInTitle && !isShowTitle && setIsShowTitle(true);
+  }, [isInTitle]);
+  useEffect(() => {
+    isInValue && !isShowValue && setIsShowValue(true);
+  }, [isInValue]);
+
   return (
     <SecondContentsContainer>
       <Layout>
-        <Image src={'/image/ceo-2.png'} />
-        <Title language={language}>{CEOData[language].data[1].title}</Title>
-        <Value language={language}>{CEOData[language].data[1].value}</Value>
+        <Image
+          src={'/image/ceo-2.png'}
+          isShow={isShowImage}
+          ref={targetImage}
+        />
+        <Title language={language} isShow={isShowTitle} ref={targetTitle}>
+          {CEOData[language].data[1].title}
+        </Title>
+        <Value language={language} isShow={isShowValue} ref={targetValue}>
+          {CEOData[language].data[1].value}
+        </Value>
       </Layout>
     </SecondContentsContainer>
   );
