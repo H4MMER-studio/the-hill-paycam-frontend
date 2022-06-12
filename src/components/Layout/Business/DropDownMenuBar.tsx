@@ -52,11 +52,14 @@ const MenuItem = styled.div<{ selected: Boolean }>`
   font-size: 20px;
   width: 100%;
   height: 54px;
-  background-color: ${(props) => (props.selected ? '#6100FF' : '#000')};
+  background-color: ${(props) => (props.selected ? '#6100FF' : '#ffffff4d')};
   color: #fff;
   padding: 0 16px;
   display: flex;
   align-items: center;
+
+  /* #808080 */
+  /* '#ffffff4d' */
 `;
 
 const SelectedText = styled.div`
