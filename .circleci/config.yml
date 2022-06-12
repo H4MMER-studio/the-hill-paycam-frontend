@@ -6,11 +6,16 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.1
 
 commands:
+  generate_stiemap:
+    steps:
+      - run:
+          name: Execute shell script
+          command: sh ./generate-sitemap.sh
   build_source_code:
     steps:
       - node/install:
           install-yarn: true
-          node-version: "16.13"
+          node-version: '16.13'
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
@@ -43,9 +48,10 @@ commands:
 jobs:
   deploy:
     docker:
-      - image: "cimg/base:stable"
+      - image: 'cimg/base:stable'
     steps:
       - checkout
+      - generate_stiemap
       - build_source_code
       - deploy_source_code
       - notify_slack_pass

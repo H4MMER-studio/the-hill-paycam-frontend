@@ -1,0 +1,6 @@
+
+User-agent: *
+Disallow:
+
+Sitemap: http://thehillpaycam.com/sitemap.xml
+Sitemap: http://www.thehillpaycam.com/sitemap.xml
