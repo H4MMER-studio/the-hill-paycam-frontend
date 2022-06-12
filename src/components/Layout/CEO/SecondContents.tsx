@@ -18,6 +18,7 @@ const Layout = styled.div`
 
   @media (max-width: 1023px) {
     height: auto;
+    overflow: hidden;
   }
 `;
 

@@ -10,6 +10,11 @@ interface IProps {
 
 const FirstContentsContainer = styled.div`
   position: relative;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    overflow: hidden;
+  }
 `;
 
 const Layout = styled.div<{ language: Language }>`
