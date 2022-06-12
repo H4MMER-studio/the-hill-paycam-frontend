@@ -56,9 +56,10 @@ const InfoCardLayout = styled.div`
   height: 471px;
 `;
 
-const CardTitle = styled.div`
+const CardTitle = styled.div<{ language: 'ENG' | 'KHM' }>`
   color: #d8d8d8;
-  font-family: 'Inter';
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   font-size: 36px;
   font-weight: 600;
 `;
@@ -157,14 +158,14 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                   if (width > 1023) {
                     return (
                       <InfoCard key={d.title} idx={index}>
-                        <CardTitle>{d.title}</CardTitle>
+                        <CardTitle language={language}>{d.title}</CardTitle>
                         <CardContents>{d.value}</CardContents>
                       </InfoCard>
                     );
                   } else {
                     return (
                       <MobileCard key={d.title}>
-                        <CardTitle>{d.title}</CardTitle>
+                        <CardTitle language={language}>{d.title}</CardTitle>
                         <CardContents>{d.value}</CardContents>
                       </MobileCard>
                     );
