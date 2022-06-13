@@ -8,11 +8,9 @@ interface IProps {
 }
 
 const STDMenuBarContainer = styled.div`
-  height: 77px;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1319px;
   margin: 0 auto;
   padding: 0 100px;
 
@@ -20,10 +18,10 @@ const STDMenuBarContainer = styled.div`
 `;
 
 const Menu = styled.div<{ isSelected: Boolean }>`
+  padding: 24px 36px;
   font-size: 24px;
+  line-height: 120%;
   font-weight: 800;
-  height: 77px;
-  width: 278px;
   color: ${(props) => (props.isSelected ? '#000' : '#a3a3a3')};
   background: ${(props) =>
     props.isSelected ? '#fff' : 'rgba(255, 255, 255, 0.2)'};

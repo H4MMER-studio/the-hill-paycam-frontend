@@ -55,11 +55,11 @@ const Menu = styled.div<{ isSelected: Boolean }>`
   color: #fff;
   font-weight: 600;
   font-family: 'Inter';
-  font-size: 36px;
-  height: 49px;
+  font-size: 28px;
+  height: 40px;
   cursor: pointer;
   margin-bottom: 30px;
-  border-bottom: ${(props) => (props.isSelected ? '1px solid #fff' : 'none')};
+  border-bottom: ${(props) => (props.isSelected ? '3px solid #fff' : 'none')};
   width: fit-content;
 `;
 
