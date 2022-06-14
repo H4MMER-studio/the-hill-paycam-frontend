@@ -17,8 +17,15 @@ const STDMainNavContainer = styled.div<{ isTop: boolean }>`
   height: 70px;
   z-index: 100;
   padding: 0 60px;
-  background-color: ${({ isTop }) => (isTop ? '' : 'rgba(31, 31, 31)')};
-  transition: background-color 0.5s ease-in-out;
+  ${({ isTop }) =>
+    !isTop &&
+    css`
+      background-color: rgba(0, 0, 0, 0.7);
+      border-bottom: 0.5px solid white;
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px); ;
+    `}
+  transition: all 0.5s ease-in-out;
 
   display: flex;
   align-items: center;
