@@ -4,8 +4,8 @@ export const BusinessData: ServiceDataV2 = {
   ENG: {
     data: [
       {
-        title: 'Real Estate Development Business',
-        subTitle: 'Kingdom of States',
+        title: 'Kingdom of States',
+        subTitle: 'Real Estate Development Business',
         value:
           "Kingdom of State is Cambodia's first landmark business.\n\nKingdom of State, a residential complex to be built in Cambodia's major cities and tourist attractions, will be reborn as another skyscraper and landmark in Cambodia as a representative brand for tourism and residential complexes.",
       },
@@ -28,7 +28,7 @@ export const BusinessData: ServiceDataV2 = {
           "This is the Fintech business of TEBAH Project.\n\nBy establishing an ecosystem within the TEBAH Project, governance is established through various businesses such as opening cryptocurrency exchanges, issuing tokens, online casinos, Metaverse, NFT, and games. It is Cambodia's first government certification project and a major project to lead the fintech business in Southeast Asia.",
       },
       {
-        title: 'Josun Palace',
+        title: 'Josun Palace Sihanoukville',
         subTitle: 'Luxury hotel and Casino',
         value:
           "The Hill PAYCAM plans various projects that will contribute greatly to Cambodia's tourism business.\n\nThe Hill PAYCAM, including luxury hotels, casinos, duty-free shops, shopping malls, and water parks, provides tourists with unforgettable memories and fun, and provides comfortable resorts.",
@@ -62,7 +62,7 @@ export const BusinessData: ServiceDataV2 = {
           'សេវាកម្ម Blockchainជាអាជីវកម្ម Fintech របស់គម្រោង TEBAH ។\nតាមរយៈការបង្កើតប្រព័ន្ធអេកូឡូស៊ីនៅក្នុងគម្រោង TEBAH និងសញ្ញាសម្ងាត់ផ្សេងៗដូចជាការបើកការផ្លាស់ប្តូររូបិយប័ណ្ណគ្រីបតូ\nកាស៊ីណូអនឡាញ មេតាវេស NFTហ្គេម។..ល..។អាជីវកម្ម Fintechជាគម្រោងដំបូងគេបង្អស់នៅអាស៊ីអាគ្នេយ៍ ដែលទទួលស្គាល់ដោយរដ្ឋាភិបាលកម្ពុជា។',
       },
       {
-        title: 'Josun Palace',
+        title: 'Josun Palace Sihanoukville',
         subTitle: 'Luxury hotel and Casino',
         value:
           'The Hill PAYCAMមានគម្រោងបង្កើតអាជីវកម្មនៅក្នុងប្រទេសកម្ពុជាដូចជាសណ្ឋាគារប្រណិត និង កាស៊ីណូ។\nThe Hill PAYCAM ជាមួយ Josun Palace\nនិងផ្តល់សេវាកម្មជូនល្អដល់ភ្ញៀវទេសចរណ៍ទាំងអស់ដែលចូលមក\nទស្សនានៅសណ្ឋាគារប្រណិត ផ្សារទំនើប អាងហែលទឹក។..ល..។',

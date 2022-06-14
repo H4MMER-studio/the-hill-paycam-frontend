@@ -43,16 +43,16 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="coin, the hill, paycam, bitcoin, nft, Blockchain Service, Blockchain, Business"
           name="keywords"
         />
-        <title>the hill paycam</title>
-        <meta content="the hill paycam" property="og:title" key="og:title" />
+        <title>The Hill Paycam</title>
+        <meta content="The Hill Paycam" property="og:title" key="og:title" />
         <meta
-          content="the hill paycam"
+          content="The Hill Paycam"
           name="twitter:title"
           key="twitter:title"
         />
-        <meta content="the hill paycam" name="author" key="author" />
+        <meta content="The Hill Paycam" name="author" key="author" />
         <meta
-          content="the hill paycam"
+          content="The Hill Paycam"
           property="og:site_name"
           key="og:site_name"
         />

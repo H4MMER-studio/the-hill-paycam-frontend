@@ -115,5 +115,5 @@ const MENU_LIST: BusinessMenuYpe[] = [
   'The Hill Lake CC',
   'TEBAH Project',
   'Blockchain Service',
-  'Josun Palace',
+  'Josun Palace Sihanoukville',
 ];

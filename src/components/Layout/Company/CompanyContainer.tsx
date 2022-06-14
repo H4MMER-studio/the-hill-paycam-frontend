@@ -64,7 +64,7 @@ const InfoCardLayout = styled.div`
 `;
 
 const CardTitle = styled.div<{ language: 'ENG' | 'KHM' }>`
-  color: #d8d8d8;
+  color: #fff;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   font-size: 36px;
@@ -72,10 +72,10 @@ const CardTitle = styled.div<{ language: 'ENG' | 'KHM' }>`
 `;
 
 const CardContents = styled.div<{ language: Language }>`
-  color: #d8d8d8;
+  color: #fff;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   bottom: 0px;
 `;

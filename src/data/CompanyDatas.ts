@@ -9,7 +9,7 @@ export const CompanyData: ServiceDataV1 = {
       },
       {
         title: 'Capital',
-        value: '$2,000,000',
+        value: '$100,000,000',
       },
       {
         title: 'Business Field',
@@ -31,7 +31,7 @@ export const CompanyData: ServiceDataV1 = {
       },
       {
         title: 'ប្រាក់វិនិយោគ',
-        value: '២ ០០០ ០០០ ដុល្លារ',
+        value: '១ ០០ ០០០ ០០០ ដុល្លារ',
       },
       {
         title: 'ប្រភេទអាជីវកម្ម',

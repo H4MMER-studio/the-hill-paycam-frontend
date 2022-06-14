@@ -21,8 +21,9 @@ const MenubarLayout = styled.div`
 `;
 
 const BusinessContainer: React.VFC<IProps> = ({ language }) => {
-  const [selectedMenu, setSelectedMenu] =
-    useState<BusinessMenuYpe>('Kingdom of State');
+  const [selectedMenu, setSelectedMenu] = useState<BusinessMenuYpe>(
+    'Kingdom of State'
+  );
   const { width } = useResize();
 
   const clickMenu = (menu: BusinessMenuYpe) => {
@@ -47,7 +48,7 @@ const BusinessContainer: React.VFC<IProps> = ({ language }) => {
         ele = document.getElementById('blockChain');
         break;
 
-      case 'Josun Palace':
+      case 'Josun Palace Sihanoukville':
         ele = document.getElementById('josun');
         break;
 

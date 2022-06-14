@@ -4,7 +4,7 @@ export type BusinessMenuYpe =
   | 'The Hill Lake CC'
   | 'TEBAH Project'
   | 'Blockchain Service'
-  | 'Josun Palace';
+  | 'Josun Palace Sihanoukville';
 
 export type Language = 'ENG' | 'KHM';
 

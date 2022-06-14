@@ -99,7 +99,6 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   color: #fff;
   white-space: pre-wrap;
-  text-align: center;
   z-index: 2;
   font-size: 30px;
   height: 329px;
@@ -110,7 +109,6 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
 
   @media (max-width: 1023px) {
     font-size: 16px;
-    text-align: left;
     height: auto;
   }
 `;

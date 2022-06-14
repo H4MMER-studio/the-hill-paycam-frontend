@@ -61,10 +61,10 @@ const MenuBar: React.VFC<IProps> = ({ selectedMenu, clickMenu }) => {
         Blockchain Service
       </Menu>
       <Menu
-        isSelected={selectedMenu === 'Josun Palace'}
-        onClick={() => clickMenu('Josun Palace')}
+        isSelected={selectedMenu === 'Josun Palace Sihanoukville'}
+        onClick={() => clickMenu('Josun Palace Sihanoukville')}
       >
-        Josun Palace
+        Josun Palace Sihanoukville
       </Menu>
     </STDMenuBarContainer>
   );

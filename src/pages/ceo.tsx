@@ -10,20 +10,20 @@ const CEOPage: NextPage<IProps> = ({ language }) => {
   return (
     <>
       <Head>
-        <title>the hill paycam | CEO</title>
+        <title>The Hill Paycam | CEO</title>
         <meta
-          content="the hill paycam | CEO"
+          content="The Hill Paycam | CEO"
           property="og:title"
           key="og:title"
         />
         <meta
-          content="the hill paycam | CEO"
+          content="The Hill Paycam | CEO"
           name="twitter:title"
           key="twitter:title"
         />
-        <meta content="the hill paycam | CEO" name="author" key="author" />
+        <meta content="The Hill Paycam | CEO" name="author" key="author" />
         <meta
-          content="the hill paycam | CEO"
+          content="The Hill Paycam | CEO"
           property="og:site_name"
           key="og:site_name"
         />

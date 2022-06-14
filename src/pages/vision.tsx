@@ -10,20 +10,20 @@ const VisionPage: NextPage<IProps> = ({ language }) => {
   return (
     <>
       <Head>
-        <title>the hill paycam | Vision</title>
+        <title>The Hill Paycam | Vision</title>
         <meta
-          content="the hill paycam | Vision"
+          content="The Hill Paycam | Vision"
           property="og:title"
           key="og:title"
         />
         <meta
-          content="the hill paycam | Vision"
+          content="The Hill Paycam | Vision"
           name="twitter:title"
           key="twitter:title"
         />
-        <meta content="the hill paycam | Vision" name="author" key="author" />
+        <meta content="The Hill Paycam | Vision" name="author" key="author" />
         <meta
-          content="the hill paycam | Vision"
+          content="The Hill Paycam | Vision"
           property="og:site_name"
           key="og:site_name"
         />

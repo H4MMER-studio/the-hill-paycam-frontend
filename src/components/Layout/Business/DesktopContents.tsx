@@ -23,7 +23,6 @@ const FlexBox = styled.div<{ isLast?: Boolean; isAsset?: Boolean }>`
 const RightAlignTextBox = styled.div<{ isShow: boolean }>`
   position: relative;
   width: 100%;
-  text-align: right;
   margin-right: 100px;
   min-width: 362px;
 
@@ -35,7 +34,6 @@ const RightAlignTextBox = styled.div<{ isShow: boolean }>`
 const LeftAlignTextBox = styled.div<{ isShow: boolean }>`
   position: relative;
   width: 100%;
-  text-align: left;
   min-width: 362px;
   margin-left: 100px;
 

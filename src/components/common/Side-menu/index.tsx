@@ -26,9 +26,11 @@ const STDSideMenuLayout = styled.div<{ isOpen: Boolean }>`
   background-color: #000;
   z-index: 1000;
   transition-duration: 0.5s;
+  border-left: 1px solid #777777;
 
   @media (max-width: 1023px) {
     width: 100%;
+    border-left: none;
   }
 `;
 
@@ -67,7 +69,7 @@ const SideMenu: React.VFC<IProps> = ({ isOpen, close }) => {
   const router = useRouter();
 
   const clickMenu = (menu: {
-    name: 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+    name: 'HOME' | 'Company' | 'CEO' | 'Vision' | 'Business';
     path: string;
   }) => {
     router.push(menu.path);
@@ -101,7 +103,7 @@ const SideMenu: React.VFC<IProps> = ({ isOpen, close }) => {
 export default SideMenu;
 
 const MENULIST: {
-  name: 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+  name: 'HOME' | 'Company' | 'CEO' | 'Vision' | 'Business';
   path: string;
 }[] = [
   {
@@ -109,7 +111,7 @@ const MENULIST: {
     path: '/',
   },
   {
-    name: 'Company info.',
+    name: 'Company',
     path: '/company',
   },
   {
