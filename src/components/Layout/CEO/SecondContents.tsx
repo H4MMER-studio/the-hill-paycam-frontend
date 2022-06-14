@@ -14,7 +14,7 @@ const SecondContentsContainer = styled.div`
 
 const Layout = styled.div`
   width: 100%;
-  height: 751px;
+  /* height: 751px; */
 
   @media (max-width: 1023px) {
     height: auto;
@@ -23,23 +23,23 @@ const Layout = styled.div`
 `;
 
 const Title = styled.div<{ language: Language; isShow: Boolean }>`
-  position: absolute;
+  /* position: absolute; */
   font-weight: 800;
   color: #fff;
-  font-size: 64px;
+  font-size: 36px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   white-space: pre-wrap;
-  right: ${(props) => (props.isShow ? '0px' : '-200px')};
+  /* right: ${(props) => (props.isShow ? '0px' : '-200px')}; */
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
   top: 0px;
-  text-align: right;
+  /* text-align: right; */
   max-width: 1052px;
 
   @media (max-width: 1023px) {
     position: relative;
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 32px;
     margin-bottom: 32px;
     text-align: left;
@@ -47,17 +47,17 @@ const Title = styled.div<{ language: Language; isShow: Boolean }>`
 `;
 
 const Value = styled.div<{ language: Language; isShow: Boolean }>`
-  position: absolute;
+  /* position: absolute; */
   font-weight: 500;
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   white-space: pre-wrap;
-  left: ${(props) => (props.isShow ? '0px' : '-200px')};
+  /* left: ${(props) => (props.isShow ? '0px' : '-200px')}; */
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
-  top: 50%;
-  transform: translateY(-50%);
-  line-height: 42px;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  line-height: 32px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   max-width: 600px;
@@ -67,17 +67,20 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
     font-size: 16px;
     white-space: unset;
     line-height: 24px;
-    top: 0px;
-    transform: translateY(0%);
+    max-width: none;
+    /* top: 0px; */
+    /* transform: translateY(0%); */
   }
 `;
 
 const Image = styled.img<{ isShow: Boolean }>`
-  position: absolute;
+  /* position: absolute; */
   bottom: 0px;
   right: 0px;
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
+  width: 100%;
+  height:100%;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -85,6 +88,36 @@ const Image = styled.img<{ isShow: Boolean }>`
     width: 100%;
   }
 `;
+
+const TopeLayout = styled.div`
+  margin-bottom: 48px;
+
+`
+
+const BottomLayout = styled.div`
+display:flex;
+`
+
+const DesktopImageLayout = styled.div`
+  max-width: 456px;
+  max-height: 292px;
+  margin-right: 48px;
+
+  @media(max-width: 1023px){
+    display: none;
+  }
+`
+
+const MobileImageLayout = styled.div`
+display:none;
+
+
+@media(max-width: 1023px){
+    display: block;
+  }
+
+`
+
 
 const SecondContents: React.VFC<IProps> = ({ language }) => {
   const [isInImage, targetImage] = useIsInViewport();
@@ -108,17 +141,31 @@ const SecondContents: React.VFC<IProps> = ({ language }) => {
   return (
     <SecondContentsContainer>
       <Layout>
-        <Image
-          src={'/image/ceo-2.png'}
-          isShow={isShowImage}
-          ref={targetImage}
-        />
-        <Title language={language} isShow={isShowTitle} ref={targetTitle}>
+        <MobileImageLayout>
+          <Image
+              src={'/image/ceo-2.png'}
+              ref={targetImage}
+              isShow={true}
+            />
+        </MobileImageLayout>
+      <TopeLayout>
+      <Title language={language} isShow={isShowTitle} ref={targetTitle}>
           {CEOData[language].data[1].title}
         </Title>
+      </TopeLayout>
+      <BottomLayout>
+      <DesktopImageLayout>
+          <Image
+            src={'/image/ceo-2.png'}
+            isShow={isShowImage}
+            ref={targetImage}
+          />
+        </DesktopImageLayout>
+    
         <Value language={language} isShow={isShowValue} ref={targetValue}>
           {CEOData[language].data[1].value}
         </Value>
+        </BottomLayout>
       </Layout>
     </SecondContentsContainer>
   );

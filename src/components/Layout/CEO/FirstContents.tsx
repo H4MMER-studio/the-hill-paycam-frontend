@@ -19,7 +19,7 @@ const FirstContentsContainer = styled.div`
 
 const Layout = styled.div<{ language: Language }>`
   width: 100%;
-  height: ${(props) => (props.language === 'ENG' ? 751 : 950)}px;
+  /* height: ${(props) => (props.language === 'ENG' ? 751 : 950)}px; */
 
   @media (max-width: 1024px) {
     position: relative;
@@ -32,29 +32,31 @@ const Layout = styled.div<{ language: Language }>`
 `;
 
 const Title = styled.div<{ language: Language; isShow: Boolean }>`
-  position: absolute;
+
   font-weight: 800;
   color: #fff;
-  font-size: 64px;
+  font-size: 36px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   white-space: pre-wrap;
-  left: ${(props) => (props.isShow ? '0px' : '-200px')};
+  /* left: ${(props) => (props.isShow ? '0px' : '-200px')}; */
   opacity: ${(props) => (props.isShow ? 1 : 0)};
 
   top: 0px;
   transition-duration: 1s;
+  margin-bottom: 48px;
 
   @media (max-width: 1023px) {
     position: relative;
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 32px;
     margin-bottom: 32px;
   }
 `;
 
 const Image = styled.img<{ isShow: Boolean }>`
-  position: absolute;
+  width: 100%;
+  height:100%;
   bottom: 0px;
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
@@ -71,18 +73,17 @@ const Image = styled.img<{ isShow: Boolean }>`
 `;
 
 const Value = styled.div<{ language: Language; isShow: Boolean }>`
-  position: absolute;
   font-weight: 500;
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   white-space: pre-wrap;
-  right: ${(props) => (props.isShow ? '0px' : '-200px')};
+  /* right: ${(props) => (props.isShow ? '0px' : '-200px')}; */
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
   /* top: 50%; */
-  top: ${(props) => (props.language === 'ENG' ? '50%' : '58%')};
-  transform: translateY(-50%);
-  line-height: 42px;
+  /* top: ${(props) => (props.language === 'ENG' ? '50%' : '58%')}; */
+  /* transform: translateY(-50%); */
+  line-height: 32px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   max-width: 932px;
@@ -92,14 +93,14 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
     top: 58%;
   }
 
-  @media (max-width: 1101px) {
+  /* @media (max-width: 1101px) {
     top: ${(props) => (props.language === 'ENG' ? '58%' : '67%')};
-  }
+  } */
 
   @media (max-width: 1024px) {
     bottom: 0px;
     top: auto;
-    transform: translateY(0%);
+    /* transform: translateY(0%); */
     width: auto;
   }
   @media (max-width: 1023px) {
@@ -109,6 +110,36 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
     line-height: 24px;
   }
 `;
+
+const TopeLayout = styled.div``
+
+const BottomLayout = styled.div`
+  display:flex;
+
+  @media(max-width: 1023px){
+    display:block;
+  }
+`
+
+const DesktopImageLayout = styled.div`
+  max-width: 456px;
+  max-height: 292px;
+  margin-right: 48px;
+
+  @media(max-width: 1023px){
+    display: none;
+  }
+`
+
+const MobileImageLayout = styled.div`
+display:none;
+
+
+@media(max-width: 1023px){
+    display: block;
+  }
+
+`
 
 const FirstContents: React.FC<IProps> = ({ language }) => {
   const [isInImage, targetImage] = useIsInViewport();
@@ -132,17 +163,33 @@ const FirstContents: React.FC<IProps> = ({ language }) => {
   return (
     <FirstContentsContainer>
       <Layout language={language}>
-        <Image
-          src={'/image/ceo-1.png'}
-          ref={targetImage}
-          isShow={isShowImage}
-        />
+        <MobileImageLayout>
+          <Image
+              src={'/image/ceo-1.png'}
+              ref={targetImage}
+              isShow={true}
+            />
+        </MobileImageLayout>
+        <TopeLayout>
         <Title language={language} ref={targetTitle} isShow={isShowTitle}>
           {CEOData[language].data[0].title}
         </Title>
+        </TopeLayout>
+        <BottomLayout>
+          <DesktopImageLayout>
+          <Image
+            src={'/image/ceo-1.png'}
+            ref={targetImage}
+            isShow={isShowImage}
+          />
+        </DesktopImageLayout>
+   
         <Value language={language} ref={targetValue} isShow={isShowValue}>
           {CEOData[language].data[0].value}
         </Value>
+
+        </BottomLayout>
+    
       </Layout>
     </FirstContentsContainer>
   );

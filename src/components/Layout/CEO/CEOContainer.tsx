@@ -13,16 +13,16 @@ const CEOContainerContainer = styled.div``;
 
 const ContentsLayout = styled.div`
   padding: 0 100px;
-  margin-top: 120px;
+  margin-top: 80px;
 
   @media (max-width: 1023px) {
     padding: 0 20px;
-    margin-top: 0px;
+    margin-top: 48px;
   }
 `;
 
 const MarginLayout = styled.div`
-  margin-bottom: 180px;
+  margin-bottom: 160px;
 
   @media (max-width: 1024px) {
     margin-bottom: 402px;
@@ -34,7 +34,7 @@ const MarginLayout = styled.div`
 `;
 
 const LastMarginLayout = styled.div`
-  padding-bottom: 979px;
+  /* padding-bottom: 979px; */
 
   @media (max-width: 1024px) {
     padding-bottom: 845px;

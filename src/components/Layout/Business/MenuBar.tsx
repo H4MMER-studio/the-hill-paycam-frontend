@@ -18,7 +18,8 @@ const STDMenuBarContainer = styled.div`
 `;
 
 const Menu = styled.div<{ isSelected: Boolean }>`
-  padding: 24px 36px;
+  /* padding: 24px 36px; */
+  padding: 24px;
   font-size: 24px;
   line-height: 120%;
   font-weight: 800;

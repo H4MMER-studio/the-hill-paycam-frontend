@@ -23,10 +23,10 @@ const Layout = styled.div`
 `;
 
 const Title = styled.div<{ language: Language; isShow: Boolean }>`
-  position: absolute;
+  /* position: absolute; */
   font-weight: 800;
   color: #fff;
-  font-size: 64px;
+  font-size: 36px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   white-space: pre-wrap;
@@ -34,6 +34,7 @@ const Title = styled.div<{ language: Language; isShow: Boolean }>`
   top: 0px;
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
+  margin-bottom: 48px;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -45,15 +46,15 @@ const Title = styled.div<{ language: Language; isShow: Boolean }>`
 `;
 
 const Value = styled.div<{ language: Language; isShow: boolean }>`
-  position: absolute;
-  max-width: 692px;
+  /* position: absolute; */
+  max-width: 456px;
   font-weight: 500;
   color: #fff;
-  font-size: 24px;
+  font-size: 20px;
   white-space: pre-wrap;
   right: 0px;
-  top: 141px;
-  line-height: 42px;
+  /* top: 141px; */
+  line-height: 32px;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
   z-index: 2;
@@ -93,11 +94,13 @@ const STDFlexBox = styled.div`
 `;
 
 const Image = styled.img`
-  position: absolute;
-  top: 383px;
-  left: 0px;
-  width: 645px;
-  height: 805.67px;
+  width: 100%;
+  height: 100%;
+  /* position: absolute; */
+  /* top: 383px; */
+  /* left: 0px; */
+  /* width: 645px;
+  height: 805.67px; */
 
   @media (max-width: 1023px) {
     position: relative;
@@ -106,6 +109,33 @@ const Image = styled.img`
     height: 100%;
   }
 `;
+
+const TopeLayout = styled.div``
+
+const BottomLayout = styled.div`
+display:flex;
+`
+
+const DesktopImageLayout = styled.div`
+  max-width: 456px;
+  max-height: 292px;
+  margin-right: 48px;
+
+  @media(max-width: 1023px){
+    display: none;
+  }
+`
+
+
+const MobileImageLayout = styled.div`
+    display:none;
+
+
+    @media(max-width: 1023px){
+        display: block;
+  }
+`
+
 
 const ThirdContents: React.FC<IProps> = ({ language }) => {
   const [isInContents, targetContents] = useIsInViewport();
@@ -131,13 +161,27 @@ const ThirdContents: React.FC<IProps> = ({ language }) => {
     }
   };
 
+
+
+
   return (
     <ThirdContentsContainer>
       <Layout>
-        <Image src={'/image/ceo_profile.png'} />
+      <MobileImageLayout>
+          <Image
+              src={'/image/CEO-change.png'}
+            />
+        </MobileImageLayout>
+      <TopeLayout>
         <Title isShow={isShowContents} language={language} ref={targetContents}>
           {CEOData[language].data[2].title}
         </Title>
+      </TopeLayout>
+      <BottomLayout>
+        <DesktopImageLayout>
+          
+          <Image src={'/image/CEO-change.png'} />
+        </DesktopImageLayout>
         <Value isShow={isShowContents} language={language}>
           {language === 'KHM'
             ? CEOData[language].data[2].value
@@ -150,6 +194,7 @@ const ThirdContents: React.FC<IProps> = ({ language }) => {
                 </STDFlexBox>
               ))}
         </Value>
+      </BottomLayout>
       </Layout>
     </ThirdContentsContainer>
   );
