@@ -15,6 +15,10 @@ const ContentsLayout = styled.div`
   padding: 0 100px;
   margin-top: 80px;
 
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+
   @media (max-width: 1023px) {
     padding: 0 20px;
     margin-top: 48px;
