@@ -35,7 +35,7 @@ const YoungerPopulatinoLayout = styled.div`
   @media (max-width: 1023px) {
     width: 100%;
     height: auto;
-    /* margin-top: 48px; */
+    margin-top: 48px;
     margin-bottom: 0px;
   }
 `;
