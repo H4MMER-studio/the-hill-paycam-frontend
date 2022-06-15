@@ -56,7 +56,7 @@ const Title = styled.div<{ language: Language }>`
 
 const ImageLayout = styled.div<{ isShow: Boolean }>`
   width: 100%;
-  max-height: 165px;
+  /* max-height: 165px; */
   border-radius: 13px;
   overflow: hidden;
   opacity: ${(props) => (props.isShow ? 1 : 0)};
@@ -94,6 +94,40 @@ const TopRightLayout = styled.div`
   width: 100%;
   padding-left: 24px;
 `;
+
+const StillCutLayout = styled.div`
+  display:flex;
+  margin-top: 36px;
+
+
+
+`
+
+const StillCutImage = styled.img`
+width:100%;
+height:100%;
+
+
+`
+
+const StillCutImageLayout = styled.div`
+width:100%;
+height:100%;
+
+margin-right:20px;
+
+ &:nth-last-child(1){
+  margin-right: 0px;
+} 
+`
+
+const StilcutTitle = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Inter";
+  color: #fff;
+  margin-bottom: 8px;
+`
 
 const MobileContents: React.VFC<IProps> = ({ language }) => {
   const [isInKingdom, targetKingdom] = useIsInViewPort();
@@ -212,6 +246,16 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             <Image src={'/image/Hotel-v2.png'} />
           </ImageLayout>
         </TopLayout>
+        <StillCutLayout>
+          <StillCutImageLayout>
+            <StilcutTitle>Hotel</StilcutTitle>
+            <StillCutImage src={"/image/business-still-v1.png"}/>
+          </StillCutImageLayout>
+          <StillCutImageLayout>
+          <StilcutTitle>Casino</StilcutTitle>
+          <StillCutImage src={"/image/business-still-v2.png"}/>
+          </StillCutImageLayout>
+        </StillCutLayout>
         <ValueLayout language={language} isShow={isShowJosun}>
           {BusinessData[language].data[4]?.value}
         </ValueLayout>

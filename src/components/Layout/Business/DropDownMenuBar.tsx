@@ -45,6 +45,7 @@ const MenuList = styled.div`
   width: 100%;
   left: 0px;
   z-index: 1;
+  background-color: #333;
 `;
 
 const MenuItem = styled.div<{ selected: Boolean }>`
@@ -53,11 +54,17 @@ const MenuItem = styled.div<{ selected: Boolean }>`
   font-size: 20px;
   width: 100%;
   height: 54px;
-  background-color: ${(props) => (props.selected ? '#6100FF' : '#515151')};
+  background-color: ${(props) => (props.selected ? '#6100FF' : '#333')};
   color: #fff;
   padding: 0 16px;
   display: flex;
   align-items: center;
+  border-bottom:1px solid #858585;
+
+  &:nth-last-child(1){
+    border:none;
+
+  }
 
   /* #808080 */
   /* '#ffffff4d' */

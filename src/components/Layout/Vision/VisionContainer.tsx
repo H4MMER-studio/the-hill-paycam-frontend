@@ -18,32 +18,33 @@ const ContentsLayout = styled.div`
   padding: 0 100px;
 
   @media (max-width: 1023px) {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 `;
 
 const YoungerPopulatinoLayout = styled.div`
   position: relative;
-  margin-top: 390px;
-  margin-bottom: 420px;
-  height: 329px;
-  max-width: 1000px;
+  margin-top: 80px;
+  margin-bottom: 34px;
+  /* height: 329px; */
+  max-width: 1240px;
   width: 100%;
 
   @media (max-width: 1023px) {
     width: 100%;
     height: auto;
-    margin-top: 48px;
+    /* margin-top: 48px; */
     margin-bottom: 0px;
   }
 `;
 
+
+
 const InfiniteGlowthLayout = styled.div`
   position: relative;
-  margin-top: 390px;
-  margin-bottom: 150px;
-  height: 329px;
-  width: 1000px;
+  max-width: 1240px;
+  width: 100%;
+  margin-bottom: 34px;
 
   @media (max-width: 1023px) {
     width: 100%;
@@ -53,15 +54,28 @@ const InfiniteGlowthLayout = styled.div`
   }
 `;
 
-const Vistion2Image = styled.img<{ isShow: boolean }>`
-  position: absolute;
-  width: 363px;
-  height: 383px;
-  bottom: 216px;
-  border-radius: 13px;
-  right: 0px;
+const YoungerImage = styled.img<{ isShow: boolean }>`
+  width: 100%;
+  height: 420px;
   opacity: ${(props) => (props.isShow ? 1 : 0)};
   transition-duration: 1s;
+  object-fit: cover;
+
+  @media (max-width: 1023px) {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    min-height: 693.41px;
+  }
+`;
+
+
+const Vistion2Image = styled.img<{ isShow: boolean }>`
+  width: 100%;
+  height: 420px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
+  object-fit: cover;
 
   @media (max-width: 1023px) {
     position: relative;
@@ -70,6 +84,22 @@ const Vistion2Image = styled.img<{ isShow: boolean }>`
     height: auto;
   }
 `;
+
+const Vistion3Image = styled.img<{ isShow: boolean }>`
+  width: 100%;
+  height: 420px;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
+  object-fit: cover;
+
+  @media (max-width: 1023px) {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+  }
+`;
+
 
 const Title = styled.div<{ language: Language; isShow: Boolean }>`
   position: relative;
@@ -101,7 +131,6 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
   white-space: pre-wrap;
   z-index: 2;
   font-size: 30px;
-  height: 329px;
   max-width: 1000px;
   top: ${(props) => (props.isShow ? 0 : 100)}px;
   opacity: ${(props) => (props.isShow ? 1 : 0)};
@@ -113,48 +142,13 @@ const Value = styled.div<{ language: Language; isShow: Boolean }>`
   }
 `;
 
-const YoungerImage = styled.img<{ isShow: boolean }>`
-  position: absolute;
-  width: 363px;
-  height: 383px;
-  bottom: 216px;
-  border-radius: 13px;
-  left: 0px;
-  opacity: ${(props) => (props.isShow ? 1 : 0)};
-  transition-duration: 1s;
-
-  @media (max-width: 1023px) {
-    position: relative;
-    bottom: 0px;
-    width: 100%;
-    height: auto;
-  }
-`;
-
-const Vistion3Image = styled.img<{ isShow: boolean }>`
-  position: absolute;
-  width: 363px;
-  height: 383px;
-  bottom: 216px;
-  border-radius: 13px;
-  left: 0px;
-  opacity: ${(props) => (props.isShow ? 1 : 0)};
-  transition-duration: 1s;
-
-  @media (max-width: 1023px) {
-    position: relative;
-    bottom: 0px;
-    width: 100%;
-    height: auto;
-  }
-`;
 
 const CambodiaLayout = styled.div`
   position: relative;
-  margin-top: 390px;
+  width:100%;
   margin-bottom: 150px;
-  height: 329px;
-  max-width: 1000px;
+  max-width: 1240px;
+
 
   @media (max-width: 1023px) {
     margin-top: 72px;
@@ -162,6 +156,75 @@ const CambodiaLayout = styled.div`
     height: auto;
   }
 `;
+
+const RelativeBox = styled.div`
+  position:relative;
+
+`
+
+const ContentsBoxLayout = styled.div`
+   position:relative;
+    width:100%;
+    top: -66px;
+    padding: 0 40px;
+
+    @media(max-width:1023px){
+      padding: 0 16px;
+    }
+
+ 
+`
+
+
+
+const ContentsBox = styled.div`
+  width:100%;
+  background-color:#1E1E1E;
+  display:flex;
+  padding: 36px 40px;
+
+  @media(max-width: 1023px){
+    display:block;
+    padding: 24px;
+  }
+`
+
+const TitleValue = styled.div<{language:Language}>`
+  font-size: 30px;
+  font-weight: 800;
+  color:#fff;
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
+  min-width: 392px;
+
+  @media(max-width:1023px){
+    font-size:20px;
+    margin-bottom:12px;
+  }
+`
+
+const ValueContents = styled.div<{language:Language}>`
+  font-size:20px;
+  font-weight: 500;
+  font-family: ${(props) =>
+    props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
+  color:#EBEBEB;
+
+  @media(max-width:1023px){
+    font-size: 16px;
+    line-height: 24px;
+  }
+`
+
+const SecondValueLayout = styled.div`
+  width: 203px;
+
+  @media(max-width:1023px){
+    width:100%;
+  }
+`
+
+const MaginBox = styled.div``
 
 const VisionContainer: React.VFC<IProps> = ({ language }) => {
   const [isInYounger, targetYounger] = useIsInViewport();
@@ -212,44 +275,51 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
     <STDVisionLayout>
       <Common.Banner imageSrc="/image/vision.png" title="Vision" />
       <ContentsLayout>
-        <div>
+        <div style={{width:"100%"}}>
+
           <YoungerPopulatinoLayout>
             <YoungerImage
               src={'/image/vision-1.png'}
               isShow={isShowYoungerImg}
               ref={targetYoungerImg}
             />
-            <Title
-              isShow={isShowYoungerContents}
-              language={language}
-              ref={targetYounger}
-            >
-              {VisionData[language].data[0].title}
-            </Title>
-            <Value isShow={isShowYoungerContents} language={language}>
-              {VisionData[language].data[0].value}
-            </Value>
+            <ContentsBoxLayout>
+            <ContentsBox>
+              <TitleValue language={language}>
+               {VisionData[language].data[0].title}
+              </TitleValue>
+              <ValueContents language={language}>
+                {
+                   VisionData[language].data[0].value
+                }
+             
+              </ValueContents>
+
+            </ContentsBox>
+            </ContentsBoxLayout>
           </YoungerPopulatinoLayout>
+       
+    
           <InfiniteGlowthLayout>
             <Vistion2Image
               src={'/image/vision-2.png'}
               ref={targetIsInInfiniteImg}
               isShow={isShowInfiniteImg}
             />
-            <Title
-              language={language}
-              ref={targetInfinite}
-              isShow={isShowInfiniteContents}
-            >
-              {VisionData[language].data[1].title}
-            </Title>
-            <Value
-              language={language}
-              ref={targetInfinite}
-              isShow={isShowInfiniteContents}
-            >
-              {VisionData[language].data[1].value}
-            </Value>
+            <ContentsBoxLayout>
+            <ContentsBox>
+              <TitleValue language={language}>
+              <SecondValueLayout>
+               {VisionData[language].data[1].title}
+               </SecondValueLayout>
+              </TitleValue>
+              <ValueContents language={language}>
+                {
+                   VisionData[language].data[1].value
+                }
+              </ValueContents>
+            </ContentsBox>
+            </ContentsBoxLayout>
           </InfiniteGlowthLayout>
           <CambodiaLayout>
             <Vistion3Image
@@ -257,16 +327,20 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
               ref={targetCambodiaImg}
               isShow={isShowCambodiaImg}
             />
-            <Title
-              language={language}
-              isShow={isShowCambodiaContents}
-              ref={targetIsInCambodiaContents}
-            >
-              {VisionData[language].data[2].title}
-            </Title>
-            <Value language={language} isShow={isShowCambodiaContents}>
-              {VisionData[language].data[2].value}
-            </Value>
+             <ContentsBoxLayout>
+              <ContentsBox>
+                <TitleValue language={language}>
+                {VisionData[language].data[2].title}
+                </TitleValue>
+                <ValueContents language={language}>
+                  {
+                    VisionData[language].data[2].value
+                  }
+              
+                </ValueContents>
+
+              </ContentsBox>
+            </ContentsBoxLayout>
           </CambodiaLayout>
         </div>
       </ContentsLayout>

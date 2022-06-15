@@ -32,6 +32,10 @@ const Menu = styled.div<{ isSelected: Boolean }>`
   align-items: center;
 
   cursor: pointer;
+
+  &:hover{
+    background-color:#6D6D6D;
+  }
 `;
 
 const MenuBar: React.VFC<IProps> = ({ selectedMenu, clickMenu }) => {

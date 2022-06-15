@@ -84,6 +84,39 @@ const LastSectionPadding = styled.div`
   padding-bottom: 300px;
 `;
 
+const StillCutLayout = styled.div`
+  display:flex;
+  width:100%;
+  margin-bottom: 54px;
+
+
+`
+
+const StillCutImageDiv = styled.div`
+width:100%;
+height:100%;
+margin-right:20px;
+
+&:nth-last-child(1){
+  margin-right: 0px;
+}
+
+`
+
+const StillCutTitle = styled.div`
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Inter";
+  margin-bottom: 12px;
+  color: #fff;
+
+`
+
+const StillCutImage = styled.img`
+ width:100%;
+height:100%;
+`
+
 const DesktopContents: React.VFC<IProps> = ({ language }) => {
   const [isInKingdom, targetKingdom] = useIsInViewPort();
   const [isInGolf, targetIsInGolf] = useIsInViewPort();
@@ -159,6 +192,16 @@ const DesktopContents: React.VFC<IProps> = ({ language }) => {
         <RightAlignTextBox isShow={isShowJosun}>
           <SubValue>{BusinessData[language].data[4].subTitle}</SubValue>
           <TitleValue>{BusinessData[language].data[4].title}</TitleValue>
+          <StillCutLayout>
+            <StillCutImageDiv>
+              <StillCutTitle>Hotel</StillCutTitle>
+            <StillCutImage src={"/image/business-still-v1.png"}/>
+            </StillCutImageDiv>
+            <StillCutImageDiv>
+            <StillCutTitle>Casino</StillCutTitle>
+            <StillCutImage src={"/image/business-still-v2.png"}/>
+            </StillCutImageDiv>
+          </StillCutLayout>
           <Value>{BusinessData[language].data[4].value}</Value>
         </RightAlignTextBox>
         <ImageLayout isShow={isShowJosun}>

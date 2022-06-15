@@ -6,6 +6,7 @@ import { Language } from '@/interface';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [language, setLanguage] = useState<Language>('ENG');
+  const [isShowNav, setIsShowNav] = useState(true)
 
   useEffect(() => {
     const lan = sessionStorage.getItem('lan');
@@ -57,8 +58,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           key="og:site_name"
         />
       </Head>
-      <MainNav language={language} setLanguage={setLanguage} />
-      <Component {...pageProps} language={language} />
+      <MainNav language={language} isShowNav={isShowNav}  setLanguage={setLanguage} />
+      <Component {...pageProps} language={language} setIsShowNav={setIsShowNav}/>
     </>
   );
 }

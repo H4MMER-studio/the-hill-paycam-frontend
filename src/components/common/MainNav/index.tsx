@@ -7,10 +7,11 @@ import { useResize, useScrollDirection } from '@/hooks';
 
 interface IProps {
   language: Language;
+  isShowNav:boolean;
   setLanguage: (lan: Language) => void;
 }
 
-const STDMainNavContainer = styled.div<{ isTop: boolean }>`
+const STDMainNavContainer = styled.div<{ isTop: boolean, isShowNav:boolean }>`
   position: fixed;
   top: 0px;
   width: 100%;
@@ -34,6 +35,7 @@ const STDMainNavContainer = styled.div<{ isTop: boolean }>`
   @media (max-width: 1023px) {
     height: 55px;
     padding: 0 16px;
+    display:${(props) => props.isShowNav ? "flex" : "none"};
   }
 `;
 
@@ -93,7 +95,7 @@ const MenuIcon = styled.img`
   }
 `;
 
-const MainNav: React.VFC<IProps> = ({ language, setLanguage }) => {
+const MainNav: React.VFC<IProps> = ({ language, isShowNav, setLanguage }) => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const route = useRouter();
   const { width } = useResize();
@@ -101,7 +103,7 @@ const MainNav: React.VFC<IProps> = ({ language, setLanguage }) => {
 
   return (
     <>
-      <STDMainNavContainer isTop={scrollY < 20}>
+      <STDMainNavContainer isTop={scrollY < 20} isShowNav={isShowNav}>
         <LogoImage src={'/image/logo.png'} onClick={() => route.push('/')} />
         <RightSideLayout>
           {width > 1023 ? (
