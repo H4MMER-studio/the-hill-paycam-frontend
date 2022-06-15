@@ -18,6 +18,8 @@ const ContentsLayout = styled.div`
   padding: 0 100px;
 
   @media (max-width: 1023px) {
+    width: 100%;
+    overflow:hidden;
     padding: 0 16px;
   }
 `;

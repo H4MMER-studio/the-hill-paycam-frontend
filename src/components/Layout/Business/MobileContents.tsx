@@ -49,7 +49,7 @@ const Title = styled.div<{ language: Language }>`
   width: 202px;
 
   @media (max-width: 1023px) {
-    width: 100%;
+    width: 87%;
     /* width: 197px; */
   }
 `;
@@ -236,10 +236,10 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
         <TopLayout>
           <TopLeftLayout isShow={isShowJosun}>
             <SubValue language={language}>
-              {BusinessData[language].data[4]?.subTitle}
+              {BusinessData[language].data[4]?.title}
             </SubValue>
             <Title language={language}>
-              {BusinessData[language].data[4]?.title}
+              {BusinessData[language].data[4]?.subTitle}
             </Title>
           </TopLeftLayout>
           <ImageLayout isShow={isShowJosun}>
