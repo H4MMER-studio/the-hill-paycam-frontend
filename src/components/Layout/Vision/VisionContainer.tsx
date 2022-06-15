@@ -28,7 +28,6 @@ const YoungerPopulatinoLayout = styled.div`
   position: relative;
   margin-top: 80px;
   margin-bottom: 34px;
-  /* height: 329px; */
   max-width: 1240px;
   width: 100%;
 
