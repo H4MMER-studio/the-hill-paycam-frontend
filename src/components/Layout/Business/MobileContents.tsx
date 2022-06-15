@@ -136,7 +136,7 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             </Title>
           </TopLeftLayout>
           <ImageLayout isShow={isShowKingdom}>
-            <Image src={'/image/business_golf.png'} />
+            <Image src={'/image/RealEst.png'} />
           </ImageLayout>
         </TopLayout>
         <ValueLayout language={language} isShow={isShowKingdom}>
@@ -146,7 +146,7 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
       <SectionLayout id="cc" ref={targetIsInGolf}>
         <TopLayout>
           <ImageLayout isShow={isShowGolf}>
-            <Image src={'/image/business_golf.png'} />
+            <Image src={'/image/Golf-v2.png'} />
           </ImageLayout>
           <TopRightLayout>
             <SubValue language={language}>
@@ -172,7 +172,7 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             </Title>
           </TopLeftLayout>
           <ImageLayout isShow={isShowAsset}>
-            <Image src={'/image/bitcoin.png'} />
+            <Image src={'/image/Asset-v2.png'} />
           </ImageLayout>
         </TopLayout>
         <ValueLayout language={language} isShow={isShowAsset}>
@@ -208,7 +208,7 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
             </Title>
           </TopLeftLayout>
           <ImageLayout isShow={isShowJosun}>
-            <Image src={'/image/hotel.png'} />
+            <Image src={'/image/Hotel-v2.png'} />
           </ImageLayout>
         </TopLayout>
         <ValueLayout language={language} isShow={isShowJosun}>

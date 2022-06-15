@@ -44,14 +44,14 @@ const LeftAlignTextBox = styled.div<{ isShow: boolean }>`
 
 const SubValue = styled.div`
   font-size: 24px;
-  font-weight: 800;
-  color: #fff;
+  font-weight: 600;
+  color: #AE7DFF;
   font-family: 'Inter';
   margin-bottom: 16px;
 `;
 
 const TitleValue = styled.div`
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 800;
   color: #fff;
   font-family: 'Inter';
@@ -59,9 +59,10 @@ const TitleValue = styled.div`
 `;
 
 const Value = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   line-height: 36px;
-  color: #b5b5b5;
+  /* color: #b5b5b5; */
+  color:#fff;
   white-space: pre-wrap;
 `;
 
@@ -121,12 +122,12 @@ const DesktopContents: React.VFC<IProps> = ({ language }) => {
           <Value>{BusinessData[language].data[0].value}</Value>
         </RightAlignTextBox>
         <ImageLayout isShow={isShowKingdom}>
-          <Image src={'/image/business_golf.png'} />
+          <Image src={'/image/RealEst.png'} />
         </ImageLayout>
       </FlexBox>
       <FlexBox id="cc" ref={targetIsInGolf}>
         <ImageLayout isShow={isShowGolf}>
-          <Image src={'/image/business_golf.png'} />
+          <Image src={'/image/Golf-v2.png'} />
         </ImageLayout>
         <LeftAlignTextBox isShow={isShowGolf}>
           <SubValue>{BusinessData[language].data[1].subTitle}</SubValue>
@@ -141,7 +142,7 @@ const DesktopContents: React.VFC<IProps> = ({ language }) => {
           <Value>{BusinessData[language].data[2].value}</Value>
         </RightAlignTextBox>
         <ImageLayout isShow={isShowAsset}>
-          <Image src={'/image/bitcoin.png'} />
+          <Image src={'/image/Asset-v2.png'} />
         </ImageLayout>
       </FlexBox>
       <FlexBox id="blockChain" ref={targetBlockChain}>
@@ -161,7 +162,7 @@ const DesktopContents: React.VFC<IProps> = ({ language }) => {
           <Value>{BusinessData[language].data[4].value}</Value>
         </RightAlignTextBox>
         <ImageLayout isShow={isShowJosun}>
-          <Image src={'/image/hotel.png'} />
+          <Image src={'/image/Hotel-v2.png'} />
         </ImageLayout>
       </FlexBox>
       <LastSectionPadding />
