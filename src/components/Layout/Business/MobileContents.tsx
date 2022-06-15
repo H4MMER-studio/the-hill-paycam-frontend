@@ -27,12 +27,12 @@ const TopLeftLayout = styled.div<{ isShow: boolean }>`
   opacity: ${(props) => (props.isShow ? 1 : 0)};
 
   @media (max-width: 1023px) {
-    padding-right: 24px;
+    /* padding-right: 24px; */
   }
 `;
 
 const SubValue = styled.div<{ language: Language }>`
-  color: #cecece;
+  color: #AE7DFF;
   font-weight: 800;
   margin-bottom: 16px;
   font-family: ${(props) =>
@@ -49,7 +49,8 @@ const Title = styled.div<{ language: Language }>`
   width: 202px;
 
   @media (max-width: 1023px) {
-    width: 197px;
+    width: 100%;
+    /* width: 197px; */
   }
 `;
 
@@ -68,8 +69,8 @@ const Image = styled.img`
   object-fit: cover;
 
   @media (max-width: 1023px) {
-    min-width: 155.5px;
-    min-height: 165px;
+    /* min-width: 155.5px;
+    min-height: 165px; */
   }
 `;
 
@@ -78,7 +79,7 @@ const ValueLayout = styled.div<{ language: Language; isShow: Boolean }>`
   font-weight: 500;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
-  font-size: 14px;
+  font-size: 16px;
   line-height: 21px;
   color: #ebebeb;
   white-space: pre-wrap;
@@ -129,10 +130,10 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
         <TopLayout>
           <TopLeftLayout isShow={isShowKingdom}>
             <SubValue language={language}>
-              {BusinessData[language].data[0]?.subTitle}
+              {BusinessData[language].data[0]?.title}
             </SubValue>
             <Title language={language}>
-              {BusinessData[language].data[0]?.title}
+              {BusinessData[language].data[0]?.subTitle}
             </Title>
           </TopLeftLayout>
           <ImageLayout isShow={isShowKingdom}>
