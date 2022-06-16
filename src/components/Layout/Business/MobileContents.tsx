@@ -129,6 +129,21 @@ const StilcutTitle = styled.div`
   margin-bottom: 8px;
 `
 
+const VideoLayout = styled.div<{ isShow: boolean }>`
+   width: 100%;
+  /* max-height: 165px; */
+  border-radius: 13px;
+  overflow: hidden;
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
+  transition-duration: 1s;
+
+`
+
+const STDVideo = styled.video`
+  width:100%;
+  height:100%;
+`
+
 const MobileContents: React.VFC<IProps> = ({ language }) => {
   const [isInKingdom, targetKingdom] = useIsInViewPort();
   const [isInGolf, targetIsInGolf] = useIsInViewPort();
@@ -242,9 +257,15 @@ const MobileContents: React.VFC<IProps> = ({ language }) => {
               {BusinessData[language].data[4]?.subTitle}
             </Title>
           </TopLeftLayout>
-          <ImageLayout isShow={isShowJosun}>
+          <VideoLayout isShow={isShowJosun}>
+              <STDVideo muted autoPlay playsInline>
+                <source src={"https://the-hill-paycam.s3.ap-southeast-1.amazonaws.com/business.mp4"}/>
+              </STDVideo>
+          </VideoLayout>
+          
+          {/* <ImageLayout isShow={isShowJosun}>
             <Image src={'/image/Hotel-v2.png'} />
-          </ImageLayout>
+          </ImageLayout> */}
         </TopLayout>
         <StillCutLayout>
           <StillCutImageLayout>

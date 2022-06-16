@@ -142,13 +142,8 @@ const HomeContiner: React.VFC<IProp> = ({setIsShowNav}) => {
     }else{
       videoEle?.pause()
     }
-
   },[isPlayMobile])
   
-
-
-
-
 
   return (
     <STDHomeContainer>
@@ -182,7 +177,7 @@ const HomeContiner: React.VFC<IProp> = ({setIsShowNav}) => {
           </MobileText>
           <MobileVedioLayout>
             <CloseIcon src="/icon/close.svg" onClick={closeMobilePlayer}/>
-         <HomeVideo ref={videoRef} controls>
+         <HomeVideo ref={videoRef} controls autoPlay={isPlayMobile}>
           <source
             src={
               'https://the-hill-paycam.s3.ap-southeast-1.amazonaws.com/home.mp4'

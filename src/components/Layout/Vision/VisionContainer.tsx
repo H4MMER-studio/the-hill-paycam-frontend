@@ -4,7 +4,8 @@ import { Common } from '@/components';
 import { VisionData } from '@/data/VisionDatas';
 import { Language } from '@/interface';
 import useIsInViewport from 'use-is-in-viewport';
-
+import {useResize} from "@/hooks"
+ 
 interface IProps {
   language: 'ENG' | 'KHM';
 }
@@ -65,9 +66,10 @@ const YoungerImage = styled.img<{ isShow: boolean }>`
 
   @media (max-width: 1023px) {
     position: relative;
-    bottom: 0px;
     width: 100%;
-    min-height: 693.41px;
+    height: auto;
+    /* max-height: 693px; */
+    object-fit: cover;
   }
 `;
 
@@ -84,6 +86,8 @@ const Vistion2Image = styled.img<{ isShow: boolean }>`
     bottom: 0px;
     width: 100%;
     height: auto;
+    /* max-height: 693px; */
+    object-fit: cover;
   }
 `;
 
@@ -99,6 +103,7 @@ const Vistion3Image = styled.img<{ isShow: boolean }>`
     bottom: 0px;
     width: 100%;
     height: auto;
+    object-fit: cover;
   }
 `;
 
@@ -235,6 +240,8 @@ const CenterMarginLayout = styled.div`
 `
 
 const VisionContainer: React.VFC<IProps> = ({ language }) => {
+  const {width} = useResize()
+
   const [isInYounger, targetYounger] = useIsInViewport();
   const [isInYoungerImg, targetYoungerImg] = useIsInViewport();
 
@@ -287,7 +294,7 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
 
           <YoungerPopulatinoLayout>
             <YoungerImage
-              src={'/image/vision-1.png'}
+              src={width > 1023 ? '/image/vision-1.png' : "/image/mobile-vision-1.png"}
               isShow={isShowYoungerImg}
               ref={targetYoungerImg}
             />
@@ -310,7 +317,7 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
     
           <InfiniteGlowthLayout>
             <Vistion2Image
-              src={'/image/vision-2.png'}
+              src={width > 1023 ? '/image/vision-2.png' : "/image/mobile-vision-2.png"}
               ref={targetIsInInfiniteImg}
               isShow={isShowInfiniteImg}
             />
@@ -331,7 +338,7 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
           </InfiniteGlowthLayout>
           <CambodiaLayout>
             <Vistion3Image
-              src={'/image/vision-3.png'}
+              src={width > 1023 ?  '/image/vision-3.png' : "/image/mobile-vision-3.png"}
               ref={targetCambodiaImg}
               isShow={isShowCambodiaImg}
             />

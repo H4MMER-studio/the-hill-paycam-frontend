@@ -40,6 +40,11 @@ const LogoLayout = styled.div<{ isShow: Boolean }>`
 const LogoImage = styled.img`
   width: 303px;
   height: 142px;
+
+  @media(max-width: 1023px){
+    width: 150px;
+    height:70px;
+  }
 `;
 
 const CenterLayout = styled.div`
@@ -54,7 +59,10 @@ const CompanyContentsImage = styled.img`
   max-height: 463px;
   width: 100%;
   margin-bottom: 72px;
-  /* object-fit: contain; */
+
+  @media(max-width: 1023px){
+    margin-bottom: 30px;
+  }
 `;
 
 const InfoCardLayout = styled.div`
@@ -134,7 +142,7 @@ const MobileCard = styled.div<{ isShow: Boolean; idx: number }>`
   min-height: 143px;
   background-color: rgba(31, 31, 31, 0.6);
   border-radius: 13px;
-  margin-bottom: 36px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

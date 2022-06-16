@@ -114,7 +114,20 @@ const StillCutTitle = styled.div`
 
 const StillCutImage = styled.img`
  width:100%;
-height:100%;
+  height:100%;
+`
+
+const VideoLayout = styled.div`
+  width:100%;
+  height:100%;
+  min-height: 432px;
+
+`
+
+const STDVideo = styled.video`
+  width:100%;
+  height:100%;
+  border-radius: 13px;
 `
 
 const DesktopContents: React.VFC<IProps> = ({ language }) => {
@@ -204,9 +217,15 @@ const DesktopContents: React.VFC<IProps> = ({ language }) => {
           </StillCutLayout>
           <Value>{BusinessData[language].data[4].value}</Value>
         </RightAlignTextBox>
-        <ImageLayout isShow={isShowJosun}>
+        <VideoLayout>
+          <STDVideo muted autoPlay loop>
+            <source src={"https://the-hill-paycam.s3.ap-southeast-1.amazonaws.com/business.mp4"}/>
+          </STDVideo>
+
+        </VideoLayout>
+        {/* <ImageLayout isShow={isShowJosun}>
           <Image src={'/image/Hotel-v2.png'} />
-        </ImageLayout>
+        </ImageLayout> */}
       </FlexBox>
       <LastSectionPadding />
     </ContentsLayout>

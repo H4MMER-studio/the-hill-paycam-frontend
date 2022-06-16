@@ -63,8 +63,8 @@ const MenuLayout = styled.div`
 
   @media (max-width: 1023px) {
     position: absolute;
-    left: 12px;
-    bottom: 12px;
+    left: 20px;
+    bottom: 16px;
     height: 28px;
   }
 `;
@@ -148,18 +148,27 @@ const MenuList = styled.div`
   position: absolute;
   top: 32px;
   width: 100%;
-  height: 300px;
+  height: 184px;
+  background-color: #393939;
+  border-radius: 8px;
+  padding-top:2px;
+  /* padding:0 8px; */
 `;
 
 const MenuItem = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 14px;
   width: 100%;
-  height: 56px;
-  background-color: #808080;
+  height: 36px;
+  font-size: 16px;
   color: #fff;
   font-size: 16px;
+  border-bottom: 1px solid #4A4A4A;
+
+  &:nth-last-child(1){
+    border: none;
+  }
 `;
 
 const Banner: React.FC<IProps> = ({ imageSrc, title }) => {
@@ -196,7 +205,7 @@ const Banner: React.FC<IProps> = ({ imageSrc, title }) => {
             </CurrentMenuLayout>
           </MenuLayout>
         </BannerContentsLayout>
-        <GradientLayout />
+        {/* <GradientLayout /> */}
       </STDBannerContainer>
     </>
   );
@@ -205,11 +214,11 @@ const Banner: React.FC<IProps> = ({ imageSrc, title }) => {
 export default Banner;
 
 const MENULIST: {
-  name: 'HOME' | 'Company' | 'CEO' | 'Vision' | 'Business';
+  name: 'Home' | 'Company' | 'CEO' | 'Vision' | 'Business';
   path: string;
 }[] = [
   {
-    name: 'HOME',
+    name: 'Home',
     path: '/',
   },
   {
