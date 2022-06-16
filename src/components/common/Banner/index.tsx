@@ -205,7 +205,7 @@ const Banner: React.FC<IProps> = ({ imageSrc, title }) => {
 export default Banner;
 
 const MENULIST: {
-  name: 'HOME' | 'Company info.' | 'CEO' | 'Vision' | 'Business';
+  name: 'HOME' | 'Company' | 'CEO' | 'Vision' | 'Business';
   path: string;
 }[] = [
   {
@@ -213,7 +213,7 @@ const MENULIST: {
     path: '/',
   },
   {
-    name: 'Company info.',
+    name: 'Company',
     path: '/company',
   },
   {

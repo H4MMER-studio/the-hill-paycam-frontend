@@ -26,10 +26,10 @@ const ContentsLayout = styled.div`
 
 const YoungerPopulatinoLayout = styled.div`
   position: relative;
-  margin-top: 80px;
-  margin-bottom: 34px;
   max-width: 1240px;
   width: 100%;
+  margin: 80px auto 34px;
+
 
   @media (max-width: 1023px) {
     width: 100%;
@@ -45,7 +45,8 @@ const InfiniteGlowthLayout = styled.div`
   position: relative;
   max-width: 1240px;
   width: 100%;
-  margin-bottom: 34px;
+  margin: 0px auto 34px;
+  /* margin-bottom: 34px; */
 
   @media (max-width: 1023px) {
     width: 100%;
@@ -149,6 +150,7 @@ const CambodiaLayout = styled.div`
   width:100%;
   margin-bottom: 150px;
   max-width: 1240px;
+  margin: 0px auto 150px;
 
 
   @media (max-width: 1023px) {
@@ -225,7 +227,12 @@ const SecondValueLayout = styled.div`
   }
 `
 
-const MaginBox = styled.div``
+
+const CenterMarginLayout = styled.div`
+  width: 100%;
+
+
+`
 
 const VisionContainer: React.VFC<IProps> = ({ language }) => {
   const [isInYounger, targetYounger] = useIsInViewport();
@@ -276,7 +283,7 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
     <STDVisionLayout>
       <Common.Banner imageSrc="/image/vision.png" title="Vision" />
       <ContentsLayout>
-        <div style={{width:"100%"}}>
+        <CenterMarginLayout >
 
           <YoungerPopulatinoLayout>
             <YoungerImage
@@ -343,7 +350,7 @@ const VisionContainer: React.VFC<IProps> = ({ language }) => {
               </ContentsBox>
             </ContentsBoxLayout>
           </CambodiaLayout>
-        </div>
+        </CenterMarginLayout>
       </ContentsLayout>
     </STDVisionLayout>
   );

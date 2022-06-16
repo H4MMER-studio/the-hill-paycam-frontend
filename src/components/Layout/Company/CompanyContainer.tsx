@@ -67,17 +67,25 @@ const CardTitle = styled.div<{ language: 'ENG' | 'KHM' }>`
   color: #fff;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 600;
+
+  @media(max-width: 1023px){
+    font-size: 22px;
+  }
 `;
 
-const CardContents = styled.div<{ language: Language }>`
+const CardContents = styled.div<{ language: Language, smallFontSize:Boolean }>`
   color: #fff;
   font-family: ${(props) =>
     props.language === 'ENG' ? 'Inter' : 'Noto Sans Khmer'};
-  font-size: 20px;
+  font-size:  ${(props) => props.smallFontSize ? 18 : 24}px;
   font-weight: 500;
   bottom: 0px;
+
+  @media(max-width: 1023px){
+    font-size: 16px;
+  }
 `;
 
 const InfoCard = styled.div<{ idx: number; isShow: Boolean }>`
@@ -166,7 +174,7 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
   return (
     <STDCompanyContainer>
       <Title>Company Info</Title>
-      <Common.Banner imageSrc={'/image/company.png'} title={'Company Info'} />
+      <Common.Banner imageSrc={'/image/company.png'} title={'Company'} />
       <Layout>
         <ContentsLayout>
           <LogoLayout isShow={isShowLogo}>
@@ -181,7 +189,7 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                     return (
                       <InfoCard key={index} idx={index} isShow={isShow}>
                         <CardTitle language={language}>{d.title}</CardTitle>
-                        <CardContents language={language}>
+                        <CardContents language={language} smallFontSize={index === 2 || index === 3}>
                           {d.value}
                         </CardContents>
                       </InfoCard>
@@ -195,7 +203,7 @@ const CompanyContainer: React.VFC<IProps> = ({ language }) => {
                         ref={index === 0 ? targetMobileCard : () => {}}
                       >
                         <CardTitle language={language}>{d.title}</CardTitle>
-                        <CardContents language={language}>
+                        <CardContents language={language} smallFontSize={index === 2 || index === 3}>
                           {d.value}
                         </CardContents>
                       </MobileCard>
