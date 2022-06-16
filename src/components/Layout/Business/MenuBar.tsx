@@ -13,8 +13,9 @@ const STDMenuBarContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
   padding: 0 100px;
-
   text-align: center;
+  margin-top: 80px;
+
 `;
 
 const Menu = styled.div<{ isSelected: Boolean }>`
